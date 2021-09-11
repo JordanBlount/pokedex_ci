@@ -6,6 +6,7 @@ const Stats = (props) => {
         <div className="section">
             <h1 className="section-header">Stats</h1>
             <div className="stats-table">
+                {/* The "in-table" class is to help add additional styling to these "stat" divs. This style is being reused in places of my app. */}
                 <div className="stat in-table">
                     <p className="stat-title">Height</p>
                     <p className="stat-data">0.70cm</p>
