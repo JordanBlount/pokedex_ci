@@ -3,3 +3,34 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+nav {
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  background-color: #D86666;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#logoImg {
+  margin-left: 1em;
+}
+
+#logoText {
+  color: #FFFFFF;
+  font-weight: 700;
+
+  font-size: 1.5rem;
+  margin-left: 0.5em;
+}
+
+
+
+
+
