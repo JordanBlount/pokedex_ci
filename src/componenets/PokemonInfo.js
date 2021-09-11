@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Tag from './componenets/Tag';
+import Stats from './Stats';
+
 import '../css/PokemonInfo.css'
 
 const PokemonInfo = (props) => {
