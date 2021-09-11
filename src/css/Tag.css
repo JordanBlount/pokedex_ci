@@ -1,0 +1,49 @@
+.tag-container {
+    display: flex;
+}
+
+.tag {
+    width: 96px;
+    height: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
+}
+
+/* Targets all of the tag components except the first one. We are trying to give them some space in our tag container */
+.tag:not(:first-child) {
+    margin-left: 0.35em
+}
+
+.icy-tag {
+    background-color: #88ECDB;
+}
+
+.grass-tag {
+    background-color: #88EC98;
+}
+
+.poison-tag {
+    background-color: #EC88D6;
+}
+
+.electric-tag {
+    background-color: #ECD088;
+}
+
+.fire-tag {
+    background-color: #EC8888;
+}
+
+.ghost-tag {
+    background-color: #AE88EC;
+}
+
+.tag-text {
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
