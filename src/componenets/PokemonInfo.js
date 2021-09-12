@@ -9,7 +9,8 @@ const PokemonInfo = (props) => {
 
     return (                    
         // I need to fix this prop.pokemon.type because I want the info background to be colored based on the FIRST type that the pokemon is.
-        <div className={`pokemon-info ${props.pokemonData.types[0].type.name}`}>
+        // ${props.pokemonData.types[0].type.name}
+        <div className={`pokemon-info`}>
             <div className='identity'>
                 <h1 className='pokemon-name'>{props.pokemonData.name}</h1>
                 <p className='pokemon-id'>{props.pokemonData.id}</p>

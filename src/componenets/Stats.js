@@ -9,11 +9,11 @@ const Stats = (props) => {
                 {/* The "in-table" class is to help add additional styling to these "stat" divs. This style is being reused in places of my app. */}
                 <div className="stat in-table">
                     <p className="stat-title">Height</p>
-                    <p className="stat-data">0.70cm</p>
+                    <p className="stat-data">{props.pokemonData.height}</p>
                 </div>
                 <div className="stat in-table">
                     <p className="stat-title">Weight</p>
-                    <p className="stat-data">6.9kg</p>
+                    <p className="stat-data">{props.pokemonData.weight}</p>
                 </div>
             </div>
         </div>

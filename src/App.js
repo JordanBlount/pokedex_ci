@@ -11,13 +11,15 @@ const App = () => {
 
   // FIXME: Create a basic state so the application does not end up messing up when there is no
   // pokemon loaded
-  const [pokemonData, setPokemonData] = useState({})
+  const [pokemonData, setPokemonData] = useState({
+    default: true
+  })
 
   // NOTE: This could be an integer or string. Make sure to use typeOf to determine that
   const [search, setSearch] = useState('')
 
   const baseNormalURL = 'https://pokeapi.co/api/v2/pokemon/'; // Ex: https://pokeapi.co/api/v2/pokemon/1/
-  
+
   // Has more information about each pokemon
   const baseSpeciesURL = 'https://pokeapi.co/api/v2/pokemon-species/'; // Ex: https://pokeapi.co/api/v2/pokemon-species/1/
 
@@ -28,50 +30,48 @@ const App = () => {
     let pokemonID = 10;
     let pokeData = {}
     fetch(`${baseNormalURL}${pokemonID}`)
-    .then(response => response.json())
-    .then(data => {
-      pokeData.name = data.name;
-      pokeData.id = data.id;
-      pokeData.types = data.types;
-      pokeData.height = data.height;
-      pokeData.weight = data.weight;
-      pokeData.sprites = data.sprites;
-      pokeData.image = data.sprites.other.dream_world.front_default; // Images for our pokemon
-    });
+      .then(response => response.json())
+      .then(data => {
+        pokeData.name = data.name;
+        pokeData.id = data.id;
+        pokeData.types = data.types;
+        pokeData.height = data.height;
+        pokeData.weight = data.weight;
+        pokeData.sprites = data.sprites;
+        pokeData.image = data.sprites.other.dream_world.front_default; // Images for our pokemon
+      });
 
     fetch(`${baseSpeciesURL}${pokemonID}`)
-    .then(response => response.json())
-    .then(data => {
-      pokeData.description = data.flavor_text_entries[0].flavor_text;
-      pokeData.evolution_chain_URL = data.evolution_chain.url;
-    });
+      .then(response => response.json())
+      .then(data => {
+        pokeData.description = data.flavor_text_entries[0].flavor_text;
+        pokeData.evolution_chain_URL = data.evolution_chain.url;
+      });
     setPokemonData(pokeData);
   }
 
   useEffect(() => {
     console.log("Test", pokemonData)
-    console.log(pokemonData.types)
+    console.log("This was called");
+    //console.log(pokemonData.types)
   }, [pokemonData]);
 
-  return (
-    <div id="app">
-      <NavBar />
-      <Board pokemonData={pokemonData}/>
+  if (pokemonData.default) {
+    return (
+      <div id="app">
+        <NavBar />
+        <button onClick={getData}>Pokemon Normal</button>
+      </div>
+    )
+  } else {
+    return (
+      <div id="app">
+      <NavBar /> 
+      <Board pokemonData={pokemonData} />
       <button onClick={getData}>Pokemon Normal</button>
-      {
-        // FIXME: This needs to be fixed so that the application still works when there is no pokemon data in it
-        pokemonData === {} ? null : <div>
-          <p>{pokemonData.name}</p>
-          <p>{pokemonData.id}</p>
-          <p>{pokemonData.description}</p>
-          <p>{pokemonData.height}</p>
-          <p>{pokemonData.weight}</p>
-          <img src={pokemonData.image} alt={pokemonData.name}></img>
-
-        </div>
-      }
     </div>
-  );
+    ) 
+  }
 };
 
 
