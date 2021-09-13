@@ -22,11 +22,11 @@ const Section = (props) => {
                 {/* The "in-table" class is to help add additional styling to these "stat" divs. This style is being reused in places of my app. */}
                 <div className="stat in-table">
                     <p className="stat-title">Height</p>
-                    <p className="stat-data">{`${setHeight(props.pokemonData.height).toFixed(0)} inches`}</p>
+                    <p className="stat-data">{`${setHeight(props.pokemonData.height).toFixed(1)} inches`}</p>
                 </div>
                 <div className="stat in-table">
                     <p className="stat-title">Weight</p>
-                    <p className="stat-data">{`${setWeight(props.pokemonData.weight).toFixed(0)} lbs`}</p>
+                    <p className="stat-data">{`${setWeight(props.pokemonData.weight).toFixed(1)} lbs`}</p>
                 </div>
             </div>
         </div>

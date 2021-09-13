@@ -15,6 +15,7 @@
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.25);
 
+    /* Color for Normal tag (default) */
     background-color: #A8A87B;
 }
 
@@ -23,28 +24,68 @@
     margin-left: 0.35em
 }
 
-.icy-tag {
-    background-color: #88ECDB;
+.fire-tag {
+    background-color: #EE803B;
+}
+
+.water-tag {
+    background-color: #6A92ED;
 }
 
 .grass-tag {
-    background-color: #88EC98;
-}
-
-.poison-tag {
-    background-color: #EC88D6;
+    background-color: #7BC757;
 }
 
 .electric-tag {
-    background-color: #ECD088;
+    background-color: #F7CF43;
 }
 
-.fire-tag {
-    background-color: #EC8888;
+.icy-tag {
+    background-color: #9AD8D8;
+}
+
+.fighting-tag {
+    background-color: #BE322E;
+}
+
+.poison-tag {
+    background-color: #9F449F;
+}
+
+.ground-tag {
+    background-color: #DFBF6E;
+}
+
+.psyhic-tag {
+    background-color: #F65B89;
+}
+
+.bug-tag {
+    background-color: #A8B732;
+}
+
+.rock-tag {
+    background-color: #B89F41;
 }
 
 .ghost-tag {
-    background-color: #AE88EC;
+    background-color: #705A97;
+}
+
+.dark-tag {
+    background-color: #705849;
+}
+
+.dragon-tag {
+    background-color: #7043F4;
+}
+
+.steel-tag {
+    background-color: #B8B9CF;
+}
+
+.fairy-tag {
+    background-color: #EFB7BD;
 }
 
 .tag-text {

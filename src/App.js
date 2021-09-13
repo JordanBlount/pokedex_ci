@@ -33,10 +33,10 @@ const App = () => {
   const baseSpeciesURL = 'https://pokeapi.co/api/v2/pokemon-species/'; // Ex: https://pokeapi.co/api/v2/pokemon-species/1/
 
   // NOTE: This depends on if the pokemon has an evolution chain. We can create an array to check to see which pokemon do and do not client-side instead of having to run unnecessary API calls
-  const baseEvolutionURL = 'https://pokeapi.co/api/v2/evolution-chain/';
+  // const baseEvolutionURL = 'https://pokeapi.co/api/v2/evolution-chain/';
 
   const getData = () => {
-    let pokemonID = pokemon.getId(pokemon.random());
+    let pokemonID = 1; //pokemon.getId(pokemon.random())
     let pokeData = {}
     fetch(`${baseNormalURL}${pokemonID}`)
       .then(response => response.json())
@@ -47,13 +47,13 @@ const App = () => {
         pokeData.height = data.height;
         pokeData.weight = data.weight;
         pokeData.sprites = data.sprites;
-        pokeData.image = data.sprites.other.dream_world.front_default; // Images for our pokemon
+        pokeData.image = data.sprites.other.dream_world.front_default; // image for our pokemon
       });
 
     fetch(`${baseSpeciesURL}${pokemonID}`)
       .then(response => response.json())
       .then(data => {
-        pokeData.description = data.flavor_text_entries[0].flavor_text;
+        pokeData.description = data.flavor_text_entries[0].flavor_text; // description of our pokemon
         pokeData.evolution_chain_URL = data.evolution_chain.url;
       });
     setPokemonData(pokeData);
