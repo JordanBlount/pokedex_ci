@@ -12,7 +12,16 @@ const App = () => {
   // FIXME: Create a basic state so the application does not end up messing up when there is no
   // pokemon loaded
   const [pokemonData, setPokemonData] = useState({
-    default: true
+    default: true,
+    name: '',
+    id: 0,
+    types: [],
+    height: 0,
+    weight: 0,
+    sprites: [],
+    images: '',
+    description: '',
+    evolution_chain_URL: ''
   })
 
   // NOTE: This could be an integer or string. Make sure to use typeOf to determine that

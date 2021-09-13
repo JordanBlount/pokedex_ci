@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Stats = (props) => {
+const Section = (props) => {
     return (
         // TODO: Add some global styles to all of my sections. This is where I am going to put my spacing (container) logic so they line up correctly on mobile, tablet, and desktop.
         <div className="section">
@@ -20,4 +20,4 @@ const Stats = (props) => {
     );
 };
 
-export default Stats;
+export default Section;
