@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Tag from './Tag';
 
 import '../css/PokemonInfo.css'
+import legendaryBadge from '../assets/legendary.svg';
+import mythicalBadge from '../assets/myth.svg';
 
 const PokemonInfo = (props) => {
 
@@ -29,15 +31,25 @@ const PokemonInfo = (props) => {
         <div className={`pokemon-info green`}>
             <div className={`container`}>
                 <div className='identity'>
-                    <h1 className='pokemon-name'>{capitalizeName(props.pokemonData.name)}</h1>
-                    <p className='pokemon-id'>{setId(props.pokemonData.id)}</p>
+                    <div className="identity_left-side">
+                        <h1 className='pokemon-name'>{capitalizeName(props.pokemonData.name)}</h1>
+                        {
+                            props.pokemonData.is_legendary ? <img className="legendary" src={legendaryBadge} alt="legendary badge"></img> : null
+                        }
+                        {
+                            props.pokemonData.is_mythical ? <img className="mythical" src={mythicalBadge} alt="mythical badge"></img> : null
+                        }
+                    </div>
+                    <div className="identity_right-side">
+                        <p className='pokemon-id'>{setId(props.pokemonData.id)}</p>
+                    </div>
                 </div>
 
                 <div className="tag-container">
                     {
                         // Gets only the first 2 tags out the types
-                        props.pokemonData.types.slice(0, 2).map(tag => (
-                            <Tag type={tag.type.name} />
+                        props.pokemonData.types.slice(0, 2).map((tag, index) => (
+                            <Tag key={index} type={tag.type.name} />
                         ))
                     }
                 </div>

@@ -47,6 +47,16 @@
     margin-top: 2em;
 }
 
+.identity_left-side {
+    display: flex;
+    align-items: center;
+}
+
+.identity_right-side {
+    display: flex;
+    align-items: center;
+}
+
 .pokemon-name {
     color: #FFFFFF;
 }
@@ -63,4 +73,18 @@
     /* NOTE: This causes the image to "float" between the two divs */
     position: relative;
     top: 1.5em;
+}
+
+.legendary {
+    width: 30px;
+    height: 30px;
+
+    margin-left: 0.25em;
+}
+
+.mythical {
+    width: 28px;
+    height: 34px;
+    
+    margin-left: 0.25em;
 }

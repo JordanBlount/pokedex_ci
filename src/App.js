@@ -13,7 +13,7 @@ const App = () => {
   // pokemon loaded
   const [pokemonData, setPokemonData] = useState({
     default: true,
-    name: '',
+    name: 'default',
     id: 0,
     types: [],
     height: 0,
@@ -36,7 +36,7 @@ const App = () => {
   // const baseEvolutionURL = 'https://pokeapi.co/api/v2/evolution-chain/';
 
   const getData = () => {
-    let pokemonID = 1; //pokemon.getId(pokemon.random())
+    let pokemonID = pokemon.getId(pokemon.random());
     let pokeData = {}
     fetch(`${baseNormalURL}${pokemonID}`)
       .then(response => response.json())
@@ -54,6 +54,8 @@ const App = () => {
       .then(response => response.json())
       .then(data => {
         pokeData.description = data.flavor_text_entries[0].flavor_text; // description of our pokemon
+        pokeData.is_legendary = data.is_legendary;
+        pokeData.is_mythical = data.is_mythical;
         pokeData.evolution_chain_URL = data.evolution_chain.url;
       });
     setPokemonData(pokeData);
