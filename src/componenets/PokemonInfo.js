@@ -50,7 +50,6 @@ const PokemonInfo = (props) => {
             <Tag type={`ghost`}/>   
             </div> */}
 
-                {/* Image of the pokemon. I'm going to have to do some weird CSS tricks to get this to overlay correctly on the mobile version. I'm not going to worry about it though for now. I'll do that when I expand the app */}
                 <img className="pokemon-image" src={props.pokemonData.image} alt={props.pokemonData.name}></img>
             </div>
         </div>

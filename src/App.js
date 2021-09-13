@@ -36,7 +36,7 @@ const App = () => {
   const baseEvolutionURL = 'https://pokeapi.co/api/v2/evolution-chain/';
 
   const getData = () => {
-    let pokemonID = 10;
+    let pokemonID = 1;
     let pokeData = {}
     fetch(`${baseNormalURL}${pokemonID}`)
       .then(response => response.json())
