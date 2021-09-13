@@ -35,21 +35,12 @@ const PokemonInfo = (props) => {
 
                 <div className="tag-container">
                     {
-                        props.pokemonData.types.map(tag => {
+                        // Gets only the first 2 tags out the types
+                        props.pokemonData.types.slice(0, 2).map(tag => (
                             <Tag type={tag.type.name} />
-                        })
+                        ))
                     }
-                    <Tag type={`grass`} />
-                    <Tag type={`poison`} />
                 </div>
-
-                {/* Code for rendering the pokemon's tags */}
-                {/* <div className="tag-container">
-            <Tag type={`grass`}/>   
-            <Tag type={`fire`}/>   
-            <Tag type={`ghost`}/>   
-            </div> */}
-
                 <img className="pokemon-image" src={props.pokemonData.image} alt={props.pokemonData.name}></img>
             </div>
         </div>
