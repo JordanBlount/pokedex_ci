@@ -21,7 +21,7 @@
 .container::before {
     position: absolute;
     content: '';
-    width: 100%;
+    width: 211px;
     height: 364px;
 
     /* FIXME: Trying to get it to auto calc the height */
@@ -29,7 +29,8 @@
     background-image: url('../assets/overlay.svg');
     background-repeat: no-repeat;
 
-    outline: 1px solid coral;
+    /* NOTE: Used to check the bounds of the image */
+    /* outline: 1px solid coral; */
 
     top: 6em;
 
