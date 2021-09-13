@@ -36,7 +36,7 @@ const App = () => {
   const baseEvolutionURL = 'https://pokeapi.co/api/v2/evolution-chain/';
 
   const getData = () => {
-    let pokemonID = 3;
+    let pokemonID = pokemon.getId(pokemon.random());
     let pokeData = {}
     fetch(`${baseNormalURL}${pokemonID}`)
       .then(response => response.json())
@@ -61,8 +61,6 @@ const App = () => {
 
   useEffect(() => {
     console.log("Test", pokemonData)
-    console.log("This was called");
-    //console.log(pokemonData.types)
   }, [pokemonData]);
 
   // FIXME: Fix this so that <Board /> is not touched until it needs to be
