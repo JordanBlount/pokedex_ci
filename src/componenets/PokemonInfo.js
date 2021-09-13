@@ -11,7 +11,7 @@ const PokemonInfo = (props) => {
     }
 
     const setId = (id) => {
-        switch(id.toString().length) {
+        switch (id.toString().length) {
             case 1:
                 return `#00${id}`
             case 2:
@@ -20,36 +20,39 @@ const PokemonInfo = (props) => {
                 return `#${id}`
             default:
                 return id.toString()
-        } 
+        }
     }
 
-    return (                    
+    return (
         // I need to fix this prop.pokemon.type because I want the info background to be colored based on the FIRST type that the pokemon is.
         // ${props.pokemonData.types[0].type.name}
         <div className={`pokemon-info green`}>
-            <div className='identity'>
-                <h1 className='pokemon-name'>{capitalizeName(props.pokemonData.name)}</h1>
-                <p className='pokemon-id'>{setId(props.pokemonData.id)}</p>
-            </div>
+            <div className={`container`}>
+                <div className='identity'>
+                    <h1 className='pokemon-name'>{capitalizeName(props.pokemonData.name)}</h1>
+                    <p className='pokemon-id'>{setId(props.pokemonData.id)}</p>
+                </div>
 
-            <div className="tag-container">
-            {
-                props.pokemonData.types.map(tag => {
-                    <Tag type={tag.type.name}/>
-                    console.log(tag.type.name)
-                })
-            }
-            </div>
+                <div className="tag-container">
+                    {
+                        props.pokemonData.types.map(tag => {
+                            <Tag type={tag.type.name} />
+                        })
+                    }
+                    <Tag type={`grass`} />
+                    <Tag type={`poison`} />
+                </div>
 
-            {/* Code for rendering the pokemon's tags */}
-            {/* <div className="tag-container">
+                {/* Code for rendering the pokemon's tags */}
+                {/* <div className="tag-container">
             <Tag type={`grass`}/>   
             <Tag type={`fire`}/>   
             <Tag type={`ghost`}/>   
             </div> */}
 
-            {/* Image of the pokemon. I'm going to have to do some weird CSS tricks to get this to overlay correctly on the mobile version. I'm not going to worry about it though for now. I'll do that when I expand the app */}
-            <img className="pokemon-image" src={props.pokemonData.image} alt={props.pokemonData.name}></img>
+                {/* Image of the pokemon. I'm going to have to do some weird CSS tricks to get this to overlay correctly on the mobile version. I'm not going to worry about it though for now. I'll do that when I expand the app */}
+                <img className="pokemon-image" src={props.pokemonData.image} alt={props.pokemonData.name}></img>
+            </div>
         </div>
     );
 };

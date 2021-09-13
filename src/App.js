@@ -65,6 +65,7 @@ const App = () => {
     //console.log(pokemonData.types)
   }, [pokemonData]);
 
+  // FIXME: Fix this so that <Board /> is not touched until it needs to be
   if (pokemonData.default) {
     return (
       <div id="app">

@@ -1,15 +1,24 @@
 .pokemon-info {
+    
+}
+
+.green {
+    background-color: #88D0C4;
+}
+
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
 }
 
 
-/* FIXME: Fix the positioning of the overlay */
-/* .pokemon-info::before {
+/* FIXME: Hide overlay in div only. The bottom part should be cut off */
+.container::before {
     position: absolute;
     content: '';
     width: 100%;
@@ -17,11 +26,10 @@
     background-image: url('../assets/overlay.svg');
     background-repeat: no-repeat;
 
-    left: calc(100% - 40%);
-} */
+    top: 6em;
 
-.green {
-    background-color: #88D0C4;
+    /* Fixed the positioning of the overlay. It sits all the way to the right at 100% minus its width. This allows it to always be sitting on the right of the screen */
+    left: calc(100% - 211px);
 }
 
 .identity {
@@ -29,8 +37,7 @@
     align-items: center;
     justify-content: space-between;
 
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
     margin-top: 2em;
 }
 

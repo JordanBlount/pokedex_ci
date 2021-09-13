@@ -86,7 +86,16 @@ nav {
 }
 
 #info {
+  width: 90%;
+  margin: 0 auto;
+
   display: flex;
-  justify-content: center;
-  margin-top: 1.75em;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 2.25em;
+}
+
+.section {
+  margin-top: 0.75em;
 }
