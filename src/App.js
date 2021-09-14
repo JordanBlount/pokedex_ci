@@ -73,13 +73,15 @@ const App = () => {
   const test = () => {
     let text = search;
     if(!isNaN(text)) {
-      console.log(text);
-      let name = pokemon.getName(parseInt(text));
-      if(name !== null || name !== undefined) {
+      let id = parseInt(text);
+      if(id > 1 && id < 1118) {
+        let name = pokemon.getName(parseInt(text));
         fetchPokemonData(name);
+      } else {
+        alert("This pokemon does not exist"); 
+        setSearch('');
       }
     } else {
-      console.log("GOT HERE");
       text = text.charAt(0).toUpperCase() + text.substring(1);
       if(pokemon.all().includes(text)) {
         fetchPokemonData(text);
