@@ -1,7 +1,13 @@
 
 # Pokedex 
 
-My second project for Per Scholas. This was a project that was based on a previous group assignment that I wanted to 
+[Link](https://perscholas.instructure.com/courses/799/assignments)
+
+My second project for Per Scholas. This was a project that was based on a previous group assignment that I wanted to expand upon. 
+
+The Pokedex gives you a random pokemon (800+). 
+
+
 
 ## Wireframes
 
