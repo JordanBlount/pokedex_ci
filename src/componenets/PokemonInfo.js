@@ -6,6 +6,8 @@ import '../css/PokemonInfo.css'
 import legendaryBadge from '../assets/legendary.svg';
 import mythicalBadge from '../assets/myth.svg';
 
+import noPokemonImg from '../assets/no-image.svg';
+
 const PokemonInfo = (props) => {
 
     const capitalizeName = (name) => {
@@ -32,9 +34,6 @@ const PokemonInfo = (props) => {
             <div className={`container`}>
                 <div className='identity'>
                     <div className="identity_left-side">
-                        {
-                            console.log("We are in PokemonInfo", props.pokemonData)
-                        }
                         <h1 className='pokemon-name'>{capitalizeName(props.pokemonData.name)}</h1>
                         {
                             props.pokemonData.is_legendary ? <img className="legendary" src={legendaryBadge} alt="legendary badge"></img> : null
@@ -56,7 +55,7 @@ const PokemonInfo = (props) => {
                         ))
                     }
                 </div>
-                <img className="pokemon-image" src={props.pokemonData.image} alt={props.pokemonData.name}></img>
+                <img className="pokemon-image" src={props.pokemonData.image !== null ? props.pokemonData.image : noPokemonImg} alt={props.pokemonData.name}></img>
             </div>
         </div>
     );

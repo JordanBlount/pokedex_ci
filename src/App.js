@@ -7,6 +7,8 @@ import Board from './componenets/Board';
 import pokemon from 'pokemon';
 import axios from 'axios';
 
+import pokeball from './assets/pokeball.svg'
+import pokemonLogo from './assets/pokemon_logo.svg'
 
 const App = () => {
 
@@ -35,62 +37,58 @@ const App = () => {
   // const baseEvolutionURL = 'https://pokeapi.co/api/v2/evolution-chain/';
 
   const fetchPokemonData = () => {
-    let pokemonID = pokemon.getId(pokemon.random());
+    let pokemonID = pokemon.getId(pokemon.random()); // Gets a random pokemon id
     let pokeData = {}
     axios.all([
       axios.get(`${baseNormalURL}${pokemonID}`),
       axios.get(`${baseSpeciesURL}${pokemonID}`)
     ])
-    .then(axios.spread((data1, data2) => {
-      pokeData.name = data1.data.name;
-      pokeData.id = data1.data.id;
-      pokeData.types = data1.data.types;
-      pokeData.height = data1.data.height;
-      pokeData.weight = data1.data.weight;
-      pokeData.sprites = data1.data.sprites;
-      pokeData.image = data1.data.sprites.other.dream_world.front_default;  
+      .then(axios.spread((data1, data2) => {
+        pokeData.name = data1.data.name;
+        pokeData.id = data1.data.id;
+        pokeData.types = data1.data.types;
+        pokeData.height = data1.data.height;
+        pokeData.weight = data1.data.weight;
+        pokeData.sprites = data1.data.sprites;
+        pokeData.image = data1.data.sprites.other.dream_world.front_default;
 
-      pokeData.description = data2.data.flavor_text_entries[0].flavor_text; // description of our pokemon
-      pokeData.is_legendary = data2.data.is_legendary;
-      pokeData.is_mythical = data2.data.is_mythical;
-      pokeData.evolution_chain_URL = data2.data.evolution_chain.url;
-      setPokemonData(pokeData);
-    }));
-    // fetch(`${baseNormalURL}${pokemonID}`)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     pokeData.name = data.name;
-    //     pokeData.id = data.id;
-    //     pokeData.types = data.types;
-    //     pokeData.height = data.height;
-    //     pokeData.weight = data.weight;
-    //     pokeData.sprites = data.sprites;
-    //     pokeData.image = data.sprites.other.dream_world.front_default; // image for our pokemon
-    //   })
-    //   .then();
-    // fetch(`${baseSpeciesURL}${pokemonID}`)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     pokeData.description = data.flavor_text_entries[0].flavor_text; // description of our pokemon
-    //     pokeData.is_legendary = data.is_legendary;
-    //     pokeData.is_mythical = data.is_mythical;
-    //     pokeData.evolution_chain_URL = data.evolution_chain.url;
-    //   });
+        // Gets the description in English. Some pokemon have descriptions that are not
+        // English first. This goes through the array and finds the first description set that is 
+        // in English.
+        pokeData.description = data2.data.flavor_text_entries.find(set => {
+          return set.language.name === "en"
+        }).flavor_text; // description of our pokemon
+        pokeData.is_legendary = data2.data.is_legendary;
+        pokeData.is_mythical = data2.data.is_mythical;
+        pokeData.evolution_chain_URL = data2.data.evolution_chain.url;
+        setPokemonData(pokeData);
+      }));
   }
 
   if (pokemonData.default) {
     return (
-      <div id="app">
+      <div id="app" className='start_color'>
         <NavBar />
-        <button id="random" onClick={fetchPokemonData}>Random</button>
+        <div className="center start-screen start_color">
+          <img className="pokemon_logo" src={pokemonLogo}></img>
+          <img className="pokemon_ball" src={pokeball}></img>
+          <h1 className="pokedex">Pokedex</h1>
+        </div>
+        <div className="end start_color">
+          <button id="random" onClick={fetchPokemonData}>Random</button>
+        </div>
       </div>
     )
   } else {
     return (
       <div id="app">
         <NavBar />
-        <Board pokemonData={pokemonData} />
-        <button id="random" onClick={fetchPokemonData}>Random</button>
+        <div className="center">
+          <Board pokemonData={pokemonData} />
+        </div>
+        <div className="end">
+          <button id="random" onClick={fetchPokemonData}>Random</button>
+        </div>
       </div>
     )
   }

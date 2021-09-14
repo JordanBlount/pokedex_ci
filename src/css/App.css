@@ -12,6 +12,40 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
+}
+
+.center {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start_color {
+  background-color: #A84949;
+}
+
+.pokemon_logo {
+  width: 295px;
+  height: 106px;
+}
+
+.pokedex {
+  color: #FFFFFF;
+  margin-top: 0.25em;
+}
+
+.end {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1em;
 }
 
 nav {
@@ -39,6 +73,7 @@ nav {
 
 #board {
   width: 100%;
+  height: 100%;
 }
 
 .section-header {
@@ -99,6 +134,7 @@ nav {
 
 #info {
   width: 90%;
+  height: 100%;
   margin: 0 auto;
 
   display: flex;
@@ -115,7 +151,6 @@ nav {
 }
 
 #random {
-  margin-top: 1em;
   width: 85%;
   height: 66px;
 
