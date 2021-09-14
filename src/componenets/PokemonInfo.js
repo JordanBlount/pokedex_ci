@@ -32,6 +32,9 @@ const PokemonInfo = (props) => {
             <div className={`container`}>
                 <div className='identity'>
                     <div className="identity_left-side">
+                        {
+                            console.log("We are in PokemonInfo", props.pokemonData)
+                        }
                         <h1 className='pokemon-name'>{capitalizeName(props.pokemonData.name)}</h1>
                         {
                             props.pokemonData.is_legendary ? <img className="legendary" src={legendaryBadge} alt="legendary badge"></img> : null

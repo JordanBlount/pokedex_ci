@@ -7,8 +7,8 @@ import Info from './Info';
 const Board = (props) => {
     return (
         <div id="board">
-            <PokemonInfo pokemonData={props.pokemonData}/>
-            <Info pokemonData={props.pokemonData}/>
+            <PokemonInfo pokemonData={props.pokemonData} />
+            <Info pokemonData={props.pokemonData} />
         </div>
     );
 };
