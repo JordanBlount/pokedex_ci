@@ -74,7 +74,7 @@ const App = () => {
     let text = search;
     if(!isNaN(text)) {
       let id = parseInt(text);
-      if(id > 1 && id < 1118) {
+      if(id > 1 && id < 898) {
         let name = pokemon.getName(parseInt(text));
         fetchPokemonData(name);
       } else {
