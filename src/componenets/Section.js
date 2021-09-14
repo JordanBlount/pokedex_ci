@@ -5,9 +5,21 @@ import convert from 'convert-units';
 const Section = (props) => {
 
     // Converting height from decimeters to centimeters to inches
+    // const setHeight = (height) => {
+    //     return convert((height * 10)).from('cm').to('in');
+    // }
+
     const setHeight = (height) => {
-        return convert((height * 10)).from('cm').to('in');
-    }
+        let final = '';
+        let feet = 0;
+        let toInches = convert((height * 10)).from('cm').to('in'); 
+        if(toInches => 12) {
+          feet = (toInches / 12);
+          final = `${feet.toFixed(1)} ft`;
+          return final;
+        }
+        return `${toInches.toFixed(0)} inches`;
+      }
 
     // Converting weight from hectograms to kilograms to pounds.
     const setWeight = (weight) => {
@@ -23,7 +35,7 @@ const Section = (props) => {
                 <div className="stat in-table">
                     <p className="stat-title">Height</p>
                     {/* setHeight(props.pokemonData.height).toFixed(1) */}
-                    <p className="stat-data">{`${setHeight(props.pokemonData.height).toFixed(0)} inches`}</p>
+                    <p className="stat-data">{`${setHeight(props.pokemonData.height)}`}</p>
                 </div>
                 <div className="stat in-table">
                     <p className="stat-title">Weight</p>

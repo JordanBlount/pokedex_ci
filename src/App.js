@@ -5,6 +5,7 @@ import './css/App.css'
 import NavBar from './componenets/NavBar';
 import Board from './componenets/Board';
 import pokemon from 'pokemon';
+import convert from 'convert-units';
 import axios from 'axios';
 
 import pokeball from './assets/pokeball.svg'
@@ -70,7 +71,7 @@ const App = () => {
     setSearch(event.target.value);
   }
 
-  const test = () => {
+  const submitSearch = () => {
     let text = search;
     if(!isNaN(text)) {
       let id = parseInt(text);
@@ -104,7 +105,7 @@ const App = () => {
         <div className="end start_color">
           <div id="searchBar">
             <input id="searchText" type='text' value={search} onChange={updateSearch} />
-            <button id="random" onClick={test}>Search</button>
+            <button id="random" onClick={submitSearch}>Search</button>
           </div>
         </div>
       </div>
@@ -119,7 +120,7 @@ const App = () => {
         <div className="end">
           <div id="searchBar">
             <input id="searchText" type='text' value={search} onChange={updateSearch} />
-            <button id="random" onClick={test}>Search</button>
+            <button id="random" onClick={submitSearch}>Search</button>
           </div>
         </div>
       </div>
