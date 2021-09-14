@@ -11,7 +11,7 @@ My second project for Per Scholas. This was a project that was based on a previo
 
 ## Tech Used
 
-**Client:** React.js
+**Client:** React.js, Axios
   
 ## Authors
 
