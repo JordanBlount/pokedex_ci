@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Tag from './Tag';
 
 import '../css/PokemonInfo.css'
@@ -28,7 +26,7 @@ const PokemonInfo = (props) => {
     }
 
     return (
-        // I need to fix this prop.pokemon.type because I want the info background to be colored based on the FIRST type that the pokemon is.
+        // FIXME: I need to fix this prop.pokemon.type because I want the info background to be colored based on the FIRST type that the pokemon is.
         // ${props.pokemonData.types[0].type.name}
         <div className={`pokemon-info green`}>
             <div className={`container`}>
@@ -49,7 +47,7 @@ const PokemonInfo = (props) => {
 
                 <div className="tag-container">
                     {
-                        // Gets only the first 2 tags out the types
+                        // Gets only the first 2 tags out of the types
                         props.pokemonData.types.slice(0, 2).map((tag, index) => (
                             <Tag key={index} type={tag.type.name} />
                         ))

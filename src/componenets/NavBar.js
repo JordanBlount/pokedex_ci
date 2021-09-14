@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Imported SVG file so it would show up correctly. I couldn't place it directly in the img src
 import logo from '../assets/logo.svg'
 

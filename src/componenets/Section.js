@@ -1,5 +1,3 @@
-import React from 'react';
-
 import convert from 'convert-units';
 
 const Section = (props) => {

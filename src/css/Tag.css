@@ -21,7 +21,7 @@
 
 /* Targets all of the tag components except the first one. We are trying to give them some space in our tag container */
 .tag:not(:first-child) {
-    margin-left: 0.35em
+    margin-left: 0.35em;
 }
 
 .fire-tag {

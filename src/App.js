@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
-
-import './css/App.css'
+import React, { useState } from 'react';
+import pokemon from 'pokemon';
+import axios from 'axios';
 
 import NavBar from './componenets/NavBar';
 import Board from './componenets/Board';
-import pokemon from 'pokemon';
-import convert from 'convert-units';
-import axios from 'axios';
 
+import './css/App.css'
 import pokeball from './assets/pokeball.svg'
 import pokemonLogo from './assets/pokemon_logo.svg'
 
@@ -26,7 +24,7 @@ const App = () => {
     evolution_chain_URL: ''
   })
 
-  // NOTE: This could be an integer or string. Make sure to use typeOf to determine that
+  // TODO: This could be an integer or string. Make sure to use typeOf to determine that
   const [search, setSearch] = useState('')
 
   const baseNormalURL = 'https://pokeapi.co/api/v2/pokemon/'; // Ex: https://pokeapi.co/api/v2/pokemon/1/
@@ -34,7 +32,7 @@ const App = () => {
   // Has more information about each pokemon
   const baseSpeciesURL = 'https://pokeapi.co/api/v2/pokemon-species/'; // Ex: https://pokeapi.co/api/v2/pokemon-species/1/
 
-  // NOTE: This depends on if the pokemon has an evolution chain. We can create an array to check to see which pokemon do and do not client-side instead of having to run unnecessary API calls
+  // This depends on if the pokemon has an evolution chain. We can create an array to check to see which pokemon do and do not client-side instead of having to run unnecessary API calls
   // const baseEvolutionURL = 'https://pokeapi.co/api/v2/evolution-chain/';
 
   const fetchPokemonData = (name) => {
@@ -73,18 +71,20 @@ const App = () => {
 
   const submitSearch = () => {
     let text = search;
-    if(!isNaN(text)) {
+    if (!isNaN(text)) {
       let id = parseInt(text);
-      if(id > 0 && id < 898) {
+      if (id > 0 && id < 898) {
         let name = pokemon.getName(parseInt(text));
         fetchPokemonData(name);
       } else {
-        alert("This pokemon does not exist"); 
+        alert("This pokemon does not exist");
         setSearch('');
       }
     } else {
+      // This capitalizes the first letter of the name
       text = text.charAt(0).toUpperCase() + text.substring(1);
-      if(pokemon.all().includes(text)) {
+      // Checks to see if the pokemon actually exist
+      if (pokemon.all().includes(text)) {
         fetchPokemonData(text);
       } else {
         alert("This pokemon does not exist");
@@ -93,6 +93,7 @@ const App = () => {
     }
   }
 
+  // TODO: Refractor this
   if (pokemonData.default) {
     return (
       <div id="app" className='start_color'>

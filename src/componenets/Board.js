@@ -1,5 +1,3 @@
-import React from 'react';
-
 import PokemonInfo from './PokemonInfo';
 import Info from './Info';
 
