@@ -1,7 +1,7 @@
 
 # Pokedex 
 
-[Link](https://perscholas.instructure.com/courses/799/assignments)
+[Link](https://react-pokedex-blt.herokuapp.com/)
 
 My second project for Per Scholas. This was a project that was based on a previous group assignment that I wanted to expand upon. 
 
