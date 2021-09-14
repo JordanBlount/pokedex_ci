@@ -36,8 +36,8 @@ const App = () => {
   // NOTE: This depends on if the pokemon has an evolution chain. We can create an array to check to see which pokemon do and do not client-side instead of having to run unnecessary API calls
   // const baseEvolutionURL = 'https://pokeapi.co/api/v2/evolution-chain/';
 
-  const fetchPokemonData = () => {
-    let pokemonID = pokemon.getId(pokemon.random()); // Gets a random pokemon id
+  const fetchPokemonData = (name) => {
+    let pokemonID = pokemon.getId(name); // pokemon.getId(pokemon.random());
     let pokeData = {}
     axios.all([
       axios.get(`${baseNormalURL}${pokemonID}`),
@@ -62,7 +62,32 @@ const App = () => {
         pokeData.is_mythical = data2.data.is_mythical;
         pokeData.evolution_chain_URL = data2.data.evolution_chain.url;
         setPokemonData(pokeData);
+        setSearch('');
       }));
+  }
+
+  const updateSearch = (event) => {
+    setSearch(event.target.value);
+  }
+
+  const test = () => {
+    let text = search;
+    if(!isNaN(text)) {
+      console.log(text);
+      let name = pokemon.getName(parseInt(text));
+      if(name !== null || name !== undefined) {
+        fetchPokemonData(name);
+      }
+    } else {
+      console.log("GOT HERE");
+      text = text.charAt(0).toUpperCase() + text.substring(1);
+      if(pokemon.all().includes(text)) {
+        fetchPokemonData(text);
+      } else {
+        alert("This pokemon does not exist");
+        setSearch('');
+      }
+    }
   }
 
   if (pokemonData.default) {
@@ -75,7 +100,10 @@ const App = () => {
           <h1 className="pokedex">Pokedex</h1>
         </div>
         <div className="end start_color">
-          <button id="random" onClick={fetchPokemonData}>Random</button>
+          <div id="searchBar">
+            <input id="searchText" type='text' value={search} onChange={updateSearch} />
+            <button id="random" onClick={test}>Search</button>
+          </div>
         </div>
       </div>
     )
@@ -87,7 +115,10 @@ const App = () => {
           <Board pokemonData={pokemonData} />
         </div>
         <div className="end">
-          <button id="random" onClick={fetchPokemonData}>Random</button>
+          <div id="searchBar">
+            <input id="searchText" type='text' value={search} onChange={updateSearch} />
+            <button id="random" onClick={test}>Search</button>
+          </div>
         </div>
       </div>
     )

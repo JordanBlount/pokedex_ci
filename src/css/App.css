@@ -44,6 +44,7 @@ body {
 .end {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   margin-bottom: 1em;
 }
@@ -149,8 +150,33 @@ nav {
   max-width: 376px;
 }
 
+#searchBar {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+}
+
+#searchText {
+  width: 70%;
+  margin-right: 0.5em;
+
+  font-size: 1.75rem;
+
+  padding-left: 0.45em;
+  padding-right: 0.45em;
+  
+  background-color: #FBFBFB;
+
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.230);
+}
+
+#searchText:focus {
+  outline: none;
+}
+
 #random {
-  width: 85%;
+  width: 35%;
   height: 66px;
 
   color: white;
