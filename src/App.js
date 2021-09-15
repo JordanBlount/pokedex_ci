@@ -8,8 +8,12 @@ import Board from './componenets/Board';
 import './css/App.css'
 import pokeball from './assets/pokeball.svg'
 import pokemonLogo from './assets/pokemon_logo.svg'
+import { Route, Switch, Link, useHistory } from 'react-router-dom';
 
 const App = () => {
+
+  // Using the history from React Router to change pages
+  const history = useHistory();
 
   const [pokemonData, setPokemonData] = useState({
     default: true,
@@ -76,6 +80,7 @@ const App = () => {
       if (id > 0 && id < 898) {
         let name = pokemon.getName(parseInt(text));
         fetchPokemonData(name);
+        history.push(`/pokemon/${id}`);
       } else {
         alert("This pokemon does not exist");
         setSearch('');
@@ -86,6 +91,7 @@ const App = () => {
       // Checks to see if the pokemon actually exist
       if (pokemon.all().includes(text)) {
         fetchPokemonData(text);
+        history.push(`/pokemon/${text.toLowerCase()}`);
       } else {
         alert("This pokemon does not exist");
         setSearch('');
@@ -93,37 +99,49 @@ const App = () => {
     }
   }
 
+  const goToPage = (name) => {
+    history.push(name);
+  }
+
   // TODO: Refractor this
   if (pokemonData.default) {
     return (
       <div id="app" className='start_color'>
-        <NavBar />
-        <div className="center start-screen start_color">
-          <img className="pokemon_logo" src={pokemonLogo}></img>
-          <img className="pokemon_ball" src={pokeball}></img>
-          <h1 className="pokedex">Pokedex</h1>
-        </div>
-        <div className="end start_color">
-          <div id="searchBar">
-            <input id="searchText" type='text' value={search} onChange={updateSearch} />
-            <button id="random" onClick={submitSearch}>Search</button>
+        <NavBar isHome={true}/>
+        <Switch>
+        <Route exact path='/'>
+          <div className="center start-screen start_color">
+            <img className="pokemon_logo" src={pokemonLogo} alt="The official pokemon logo"></img>
+            <img className="pokemon_ball" src={pokeball} alt="A pokeball"></img>
+            <h1 className="pokedex">Pokedex</h1>
           </div>
-        </div>
+          <div className="end start_color">
+            <div id="searchBar">
+              <input id="searchText" type='text' value={search} onChange={updateSearch} />
+              <button id="random" onClick={submitSearch}>Search</button>
+            </div>
+          </div>
+        </Route>
+        </Switch>
       </div>
     )
   } else {
     return (
       <div id="app">
-        <NavBar />
-        <div className="center">
-          <Board pokemonData={pokemonData} />
-        </div>
-        <div className="end">
-          <div id="searchBar">
-            <input id="searchText" type='text' value={search} onChange={updateSearch} />
-            <button id="random" onClick={submitSearch}>Search</button>
+        <NavBar isHome={false} goToPage={goToPage}/>
+        <Switch>
+        <Route exact path={`/pokemon/:id`}>
+          <div className="center">
+            <Board pokemonData={pokemonData} />
           </div>
-        </div>
+          <div className="end">
+            <div id="searchBar">
+              <input id="searchText" type='text' value={search} onChange={updateSearch} />
+              <button id="random" onClick={submitSearch}>Search</button>
+            </div>
+          </div>
+        </Route>
+        </Switch>
       </div>
     )
   }

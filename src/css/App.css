@@ -46,6 +46,8 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  /* FIXME: Add some space between the stats and the bottom bar */
+  /* margin-top: 1em; */
   margin-bottom: 1em;
 }
 
@@ -60,8 +62,22 @@ nav {
   align-items: center;
 }
 
-#logoImg {
+#back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#back_arrow {
+  margin-left: 0.75em;
+}
+
+.logoImg {
   margin-left: 1em;
+}
+
+.logoImg_diff {
+  margin-left: 0.5em;
 }
 
 #logoText {
@@ -186,6 +202,10 @@ nav {
   background-color: #D08888;
   border: 1px solid rgba(0, 0, 0, 0.23);
   border-radius: 10px;
+}
+
+#random:hover {
+  opacity: 80%;
 }
 
 #random:active {
