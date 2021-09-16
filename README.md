@@ -17,7 +17,7 @@ The Pokedex gives you a random pokemon (800+).
 
 ## Tech Used
 
-**Client:** React.js, Axios
+**Client:** React.js, Axios, React Router
   
 ## Authors
 
