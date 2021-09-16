@@ -7,6 +7,8 @@ const Info = (props) => {
                 {props.pokemonData.description}
             </p>
             <Section pokemonData={props.pokemonData}/>
+            {/* <Section pokemonData={props.pokemonData}/> */}
+            {/* <Section pokemonData={props.pokemonData}/> */}
         </div>
     );
 };

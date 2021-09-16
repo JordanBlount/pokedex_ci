@@ -15,9 +15,12 @@ body {
   height: 100vh;
 }
 
-.center {
+.page {
   flex-grow: 1;
   width: 100%;
+
+  display: flex;
+  justify-content: center;
 }
 
 .start-screen {
@@ -47,8 +50,10 @@ body {
   align-items: center;
   width: 100%;
   /* FIXME: Add some space between the stats and the bottom bar */
-  /* margin-top: 1em; */
-  margin-bottom: 1em;
+  margin-top: 1em;
+
+  /* HACK: I'm using this instead of margin-bottom to get the spacing on the end of the page */
+  padding-bottom: 1em;
 }
 
 nav {

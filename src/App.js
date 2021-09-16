@@ -3,30 +3,34 @@ import pokemon from 'pokemon';
 import axios from 'axios';
 
 import NavBar from './componenets/NavBar';
-import Board from './componenets/Board';
+
+import Home from './pages/Home.js';
+import Pokemon from './pages/Pokemon.js';
+import Stats from './pages/Stats.js'
 
 import './css/App.css'
-import pokeball from './assets/pokeball.svg'
-import pokemonLogo from './assets/pokemon_logo.svg'
-import { Route, Switch, Link, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 
 const App = () => {
 
   // Using the history from React Router to change pages
   const history = useHistory();
+  const location = useLocation();
 
   const [pokemonData, setPokemonData] = useState({
     default: true,
     name: 'default',
-    id: 0,
+    id: 900,
     types: [],
     height: 0,
     weight: 0,
     sprites: [],
-    images: '',
-    description: '',
-    evolution_chain_URL: ''
+    image: null,
+    description: 'This is the ilusive pokemon that never appears.',
+    evolution_chain_URL: null
   })
+
+  const [searchBar, showSearchBar] = useState(true);
 
   // TODO: This could be an integer or string. Make sure to use typeOf to determine that
   const [search, setSearch] = useState('')
@@ -64,6 +68,9 @@ const App = () => {
         pokeData.is_legendary = data2.data.is_legendary;
         pokeData.is_mythical = data2.data.is_mythical;
         pokeData.evolution_chain_URL = data2.data.evolution_chain.url;
+
+        // Stops use from making unnecessary API calls
+        pokeData.default = false;
         setPokemonData(pokeData);
         setSearch('');
       }));
@@ -73,8 +80,8 @@ const App = () => {
     setSearch(event.target.value);
   }
 
-  const submitSearch = () => {
-    let text = search;
+  // Sets 'search' to be the default value for text
+  const submitSearch = (event, text = search, input = true) => {
     if (!isNaN(text)) {
       let id = parseInt(text);
       if (id > 0 && id < 898) {
@@ -82,8 +89,13 @@ const App = () => {
         fetchPokemonData(name);
         history.push(`/pokemon/${id}`);
       } else {
-        alert("This pokemon does not exist");
-        setSearch('');
+        if (input) {
+          alert("This pokemon does not exist");
+          setSearch('');
+        } else {
+          // Takes us to the homepage if the pokemon does not exist
+          history.push('/')
+        }
       }
     } else {
       // This capitalizes the first letter of the name
@@ -93,58 +105,86 @@ const App = () => {
         fetchPokemonData(text);
         history.push(`/pokemon/${text.toLowerCase()}`);
       } else {
-        alert("This pokemon does not exist");
-        setSearch('');
+        if (input) {
+          alert("This pokemon does not exist");
+          setSearch('');
+        } else {
+          // Takes us to the homepage if the pokemon does not exist
+          history.push('/')
+        }
       }
     }
   }
 
-  const goToPage = (name) => {
-    history.push(name);
+  // Handles my routing system to go back to the previous page
+  const goBack = () => {
+    let currPath = location.pathname;
+    switch (currPath.toLowerCase()) {
+      case `/`:
+        break;
+
+      case `/pokemon/${pokemonData.id}`:
+        history.push('/');
+        resetData();
+        break;
+
+      case `/pokemon/${pokemonData.name}`:
+        history.push('/');
+        resetData();
+        break;
+
+      case `/pokemon/${pokemonData.id}/stats/details`:
+        history.push(`/pokemon/${pokemonData.id}`);
+        break;
+
+      case `/pokemon/${pokemonData.name}/stats/details`:
+        history.push(`/pokemon/${pokemonData.name}`);
+        break;
+
+      default:
+        history.goBack();
+        break;
+    }
   }
 
-  // TODO: Refractor this
-  if (pokemonData.default) {
-    return (
-      <div id="app" className='start_color'>
-        <NavBar isHome={true}/>
-        <Switch>
-        <Route exact path='/'>
-          <div className="center start-screen start_color">
-            <img className="pokemon_logo" src={pokemonLogo} alt="The official pokemon logo"></img>
-            <img className="pokemon_ball" src={pokeball} alt="A pokeball"></img>
-            <h1 className="pokedex">Pokedex</h1>
-          </div>
-          <div className="end start_color">
-            <div id="searchBar">
-              <input id="searchText" type='text' value={search} onChange={updateSearch} />
-              <button id="random" onClick={submitSearch}>Search</button>
-            </div>
-          </div>
-        </Route>
-        </Switch>
-      </div>
-    )
-  } else {
-    return (
-      <div id="app">
-        <NavBar isHome={false} goToPage={goToPage}/>
-        <Switch>
-        <Route exact path={`/pokemon/:id`}>
-          <div className="center">
-            <Board pokemonData={pokemonData} />
-          </div>
-          <div className="end">
-            <div id="searchBar">
-              <input id="searchText" type='text' value={search} onChange={updateSearch} />
-              <button id="random" onClick={submitSearch}>Search</button>
-            </div>
-          </div>
-        </Route>
-        </Switch>
-      </div>
-    )
+  const resetData = () => {
+    setPokemonData({
+      default: true,
+      name: 'default',
+      id: 900,
+      types: [],
+      height: 0,
+      weight: 0,
+      sprites: [],
+      image: null,
+      description: 'This is the ilusive pokemon that never appears.',
+      evolution_chain_URL: null
+    });
   }
+
+  return (
+    // Sets the background color for the page based on the current location. If '/', sets it to red
+    <div id='app' className={`${location.pathname === '/' ? 'start_color' : ''}`}>
+      <NavBar isHome={pokemonData.default} goBack={goBack} />
+      <Switch>
+        <Route exact path='/'>
+          <Home pokemonData={pokemonData} showSearchBar={showSearchBar} />
+        </Route>
+        <Route exact path='/pokemon/:id'>
+          <Pokemon pokemonData={pokemonData} submitSearch={submitSearch} showSearchBar={showSearchBar} />
+        </Route>
+        <Route exact path='/pokemon/:id/stats/:stat'>
+          <Stats pokemonData={pokemonData} showSearchBar={showSearchBar} />
+        </Route>
+      </Switch>
+      <div style={{ display: searchBar ? 'flex' : 'none' }} className={`end ${location.pathname === '/' ? 'start_color' : ''}`}>
+        <div id="searchBar">
+          <input id="searchText" type='text' value={search} onChange={updateSearch} />
+          <button id="random" onClick={submitSearch}>Search</button>
+        </div>
+      </div>
+    </div>
+  )
 };
 
 
