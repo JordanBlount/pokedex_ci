@@ -116,37 +116,6 @@ const App = () => {
     }
   }
 
-  // Handles my routing system to go back to the previous page
-  const goBack = () => {
-    let currPath = location.pathname;
-    switch (currPath.toLowerCase()) {
-      case `/`:
-        break;
-
-      case `/pokemon/${pokemonData.id}`:
-        history.push('/');
-        resetData();
-        break;
-
-      case `/pokemon/${pokemonData.name}`:
-        history.push('/');
-        resetData();
-        break;
-
-      case `/pokemon/${pokemonData.id}/stats/details`:
-        history.push(`/pokemon/${pokemonData.id}`);
-        break;
-
-      case `/pokemon/${pokemonData.name}/stats/details`:
-        history.push(`/pokemon/${pokemonData.name}`);
-        break;
-
-      default:
-        history.goBack();
-        break;
-    }
-  }
-
   const resetData = () => {
     setPokemonData({
       default: true,
@@ -165,7 +134,7 @@ const App = () => {
   return (
     // Sets the background color for the page based on the current location. If '/', sets it to red
     <div id='app' className={`${location.pathname === '/' ? 'start_color' : ''}`}>
-      <NavBar isHome={pokemonData.default} goBack={goBack} />
+      <NavBar isHome={pokemonData.default} />
       <Switch>
         <Route exact path='/'>
           <Home pokemonData={pokemonData} showSearchBar={showSearchBar} />
