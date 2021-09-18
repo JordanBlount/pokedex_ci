@@ -26,10 +26,12 @@ const NavBar = (props) => {
                 break;
 
             case `/pokemon/${props.pokemonData.id}/stats/details`:
+                props.showSearchBar(true);
                 history.push(`/pokemon/${props.pokemonData.id}`);
                 break;
 
             case `/pokemon/${props.pokemonData.name}/stats/details`:
+                props.showSearchBar(true);
                 history.push(`/pokemon/${props.pokemonData.name}`);
                 break;
 

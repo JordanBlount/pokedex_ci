@@ -6,7 +6,7 @@ const Board = (props) => {
     return (
         <div id="board">
             <PokemonInfo pokemonData={props.pokemonData} />
-            <Info pokemonData={props.pokemonData} />
+            <Info pokemonData={props.pokemonData} showSearchBar={props.showSearchBar}/>
         </div>
     );
 };

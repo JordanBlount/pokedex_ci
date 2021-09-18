@@ -148,7 +148,7 @@ const App = () => {
   return (
     // Sets the background color for the page based on the current location. If '/', sets it to red
     <div id='app' className={`${location.pathname === '/' ? 'start_color' : ''}`}>
-      <NavBar pokemonData={pokemonData} isHome={pokemonData.default} setPokemonData={setPokemonData} />
+      <NavBar pokemonData={pokemonData} isHome={pokemonData.default} setPokemonData={setPokemonData} showSearchBar={showSearchBar}/>
       <Switch>
         <Route exact path='/'>
           <Home pokemonData={pokemonData} showSearchBar={showSearchBar} />

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { useHistory, useLocation, useParams } from 'react-router';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
+
+import '../css/Stats.css';
 
 const Stats = (props) => {
 
@@ -28,8 +30,8 @@ const Stats = (props) => {
     }, []);
 
     return (
-        <div className='stats page'>
-
+        <div id="stats" className='page'>
+            <p>Test</p>
         </div>
     );
 };

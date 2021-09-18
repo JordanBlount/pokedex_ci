@@ -9,7 +9,7 @@ const Info = (props) => {
             <p className="pokemon-description">
                 {props.pokemonData.description}
             </p>
-            <Section pokemonData={props.pokemonData}/>
+            <Section pokemonData={props.pokemonData} showSearchBar={props.showSearchBar}/>
             <EvolutionTable pokemonData={props.pokemonData} />
             {/* <Section pokemonData={props.pokemonData}/> */}
             {/* <Section pokemonData={props.pokemonData}/> */}

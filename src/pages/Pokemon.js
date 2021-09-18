@@ -37,7 +37,7 @@ const Pokemon = (props) => {
     
     return (
         <div className="pokemon page">
-            <Board pokemonData={props.pokemonData} />
+            <Board pokemonData={props.pokemonData} showSearchBar={props.showSearchBar}/>
         </div>
     );
 };

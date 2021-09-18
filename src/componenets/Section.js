@@ -1,6 +1,12 @@
 import convert from 'convert-units';
+import { useHistory, useParams } from 'react-router';
+
+import right_arrow from '../assets/right_arrow.svg';
 
 const Section = (props) => {
+
+    const history = useHistory();
+    const params = useParams();
 
     // Converting height from decimeters to centimeters to inches
     // const setHeight = (height) => {
@@ -24,6 +30,11 @@ const Section = (props) => {
         return convert((weight * 0.1)).from('kg').to('lb');
     }
 
+    const openDetails = () => {
+        props.showSearchBar(false);
+        history.push(`/pokemon/${params.id}/stats/details`);
+    }
+
     return (
         // TODO: Add some global styles to all of my sections. This is where I am going to put my spacing (container) logic so they line up correctly on mobile, tablet, and desktop.
         <div className="section">
@@ -39,6 +50,9 @@ const Section = (props) => {
                     <p className="stat-title">Weight</p>
                     {/* setWeight(props.pokemonData.weight).toFixed(1) */}
                     <p className="stat-data">{`${setWeight(props.pokemonData.weight).toFixed(0)} lbs`}</p>
+                </div>
+                <div id="more-info" onClick={openDetails}>
+                    <img src={right_arrow}></img>
                 </div>
             </div>
         </div>

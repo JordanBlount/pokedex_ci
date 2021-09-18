@@ -26,7 +26,6 @@ const EvolutionTable = (props) => {
     const evolutionTable = () => {
         let chains = [];
         let firstChain = props.pokemonData.chain;
-        console.log(props.pokemonData.chain)
         if (props.pokemonData.chain !== undefined && props.pokemonData.chain.evolves_to.length !== 0) {
             let firstChain = props.pokemonData.chain;
             let firstPokemonId = getPokemonId(firstChain.species.url);
