@@ -40,6 +40,22 @@ const NavBar = (props) => {
         }
     }
 
+    // TODO: Remove 'props.setPokemonData' once Redux is implemented
+    const resetData = () => {
+        props.setPokemonData({
+          default: true,
+          name: 'default',
+          id: 900,
+          types: [],
+          height: 0,
+          weight: 0,
+          sprites: [],
+          image: null,
+          description: 'This is the ilusive pokemon that never appears.',
+          evolution_chain_URL: null
+        });
+      }
+
     return (
         <nav>
             {

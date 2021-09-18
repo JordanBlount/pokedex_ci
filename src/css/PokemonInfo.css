@@ -88,3 +88,8 @@
     
     margin-left: 0.25em;
 }
+
+.pokemon_img {
+    width: 144px;
+    height: 144px;
+}
