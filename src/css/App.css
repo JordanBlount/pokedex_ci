@@ -182,7 +182,7 @@ nav {
   outline: none;
 }
 
-#random {
+#searchBtn {
   width: 35%;
   height: 66px;
 
@@ -195,10 +195,18 @@ nav {
   border-radius: 10px;
 }
 
-#random:hover {
+#searchBtn:hover {
   opacity: 80%;
 }
 
 #random:active {
   background-color: #a16a6a;
+}
+
+@media(min-width: 600px) {
+
+  #searchBtn {
+    font-size: 1.75rem;
+  }
+  
 }

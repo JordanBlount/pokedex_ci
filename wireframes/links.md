@@ -32,3 +32,6 @@ https://stackoverflow.com/questions/30915173/react-router-go-back-a-page-how-do-
 
 https://stackoverflow.com/questions/44318631/how-get-the-value-of-match-params-id-on-react-router
 
+// Checking to see if a link works
+
+https://stackoverflow.com/questions/18837735/check-if-image-exists-on-server-using-javascript/18837818

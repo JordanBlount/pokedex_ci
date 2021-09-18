@@ -37,6 +37,7 @@
     margin-bottom: 1em;
   }
 
+  /* FIXME: Needs to be optimized for smaller screens. The container is causing side scrolling */
   .evolution_table {
       margin-top: 1.5em;
   }

@@ -163,7 +163,7 @@ const App = () => {
       <div style={{ display: searchBar ? 'flex' : 'none' }} className={`end ${location.pathname === '/' ? 'start_color' : ''}`}>
         <div id="searchBar">
           <input id="searchText" type='text' value={search} onChange={updateSearch} />
-          <button id="random" onClick={submitSearch}>Search</button>
+          <button id="searchBtn" onClick={submitSearch}>Search</button>
         </div>
       </div>
     </div>

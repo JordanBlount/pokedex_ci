@@ -12,6 +12,8 @@ const Stats = (props) => {
     useEffect(()=> {
         props.showSearchBar(false);
         console.log(location.pathname);
+        // NOTE: Redo this routing because I am not even sure what I was doing lol
+        // TODO: Make it so that these pages are not accessible unless you have actually search for OR opened a link directly to a pokemon (state has non-default data in it)
         if(!Number.isNaN(parseInt(params.stat))) {
             if(props.pokemonData.default) {
                 history.push(`/`);
@@ -20,6 +22,7 @@ const Stats = (props) => {
             }
         }
         if(!paths.includes(params.stat.toLowerCase())) {
+            props.showSearchBar(true);
             history.push('/');
         }
     }, []);

@@ -4,6 +4,7 @@ import noPokemonImg from '../assets/no-image.svg';
 
 import '../css/EvolutionTable.css'
 
+// FIXME: Stop this component from rendering 4 or 8 times. Something is going on where it renders two.
 const EvolutionTable = (props) => {
 
     let baseImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/`

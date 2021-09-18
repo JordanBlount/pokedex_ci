@@ -4,17 +4,16 @@ import noPokemonImg from '../assets/no-image.svg';
 
 const Evolution = (props) => {
 
-    function imageExists(image_url){
-
+    const imageExists = (image_url) => {
         var http = new XMLHttpRequest();
-    
         http.open('HEAD', image_url, false);
         http.send();
-    
-        return http.status != 404;
-    
+        let exist = http.status != 404;
+        http.abort(); // Close the connection
+        return exist;
     }
 
+    // FIXME: Change this to store the URLs in state so that I do not have to make unncessary calls (e.g. The second pokemon image is checked 2 different times unncessarily)
     return (
         <div className="evolution">
             {/* 2 pokemon with a level in-between them. The images (sprites) are going to be passed through props */}
