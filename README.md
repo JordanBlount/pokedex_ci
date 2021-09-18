@@ -2,9 +2,11 @@
 
 [Link](https://react-pokedex-blt.herokuapp.com/)
 
-My second project for Per Scholas. This was a project that was based on a previous group assignment that I wanted to expand upon. 
+The Pokedex allows you to look up your favorite pokemon to see their stats. You can search by name and id! There are currently: **898** pokemon in the database. You can also directly link to pokemon pages (e.g. [Here](https://react-pokedex-blt.herokuapp.com/pokemon/entei))
 
-The Pokedex gives you a random pokemon (800+). 
+<br>
+
+This is my second project for Per Scholas. This was a project that was based on a previous group assignment that I wanted to expand upon. 
 
 ## Features
 
