@@ -1,10 +1,48 @@
 .pokemon-info {
-    
+    background-color: #88D0C4;
+}
+
+/* Set all colors for backgrounds here */
+.black {
+    background-color: #2F2F29;
+}
+
+.blue {
+    background-color: #88BBD0;
+}
+
+.brown {
+    background-color: #D0AF88;
+}
+
+.gray {
+    background-color: #A3A2A1;   
 }
 
 .green {
     background-color: #88D0C4;
 }
+
+.pink {
+    background-color: #D0889A;
+}
+
+.purple {
+    background-color: #BE88D0;
+}
+
+.red {
+    background-color: #D08888;
+}
+
+.white {
+
+}
+
+.yellow {
+    background-color: #CFD088;
+}
+
 
 .container {
     display: flex;

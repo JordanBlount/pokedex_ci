@@ -1,7 +1,5 @@
 import Evolution from './Evolution';
 
-import noPokemonImg from '../assets/no-image.svg';
-
 import '../css/EvolutionTable.css'
 
 // FIXME: Stop this component from rendering 4 or 8 times. Something is going on where it renders two.
@@ -25,7 +23,6 @@ const EvolutionTable = (props) => {
     // FIXME: Refractor this code
     const evolutionTable = () => {
         let chains = [];
-        let firstChain = props.pokemonData.chain;
         if (props.pokemonData.chain !== undefined && props.pokemonData.chain.evolves_to.length !== 0) {
             let firstChain = props.pokemonData.chain;
             let firstPokemonId = getPokemonId(firstChain.species.url);

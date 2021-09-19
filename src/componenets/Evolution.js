@@ -4,11 +4,12 @@ import noPokemonImg from '../assets/no-image.svg';
 
 const Evolution = (props) => {
 
+    // FIXME: Do not use this to check if they exist. This should also be asychronous
     const imageExists = (image_url) => {
         var http = new XMLHttpRequest();
         http.open('HEAD', image_url, false);
         http.send();
-        let exist = http.status != 404;
+        let exist = http.status !== 404;
         http.abort(); // Close the connection
         return exist;
     }

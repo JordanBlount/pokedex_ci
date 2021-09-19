@@ -43,8 +43,6 @@ const App = () => {
   // This depends on if the pokemon has an evolution chain. We can create an array to check to see which pokemon do and do not client-side instead of having to run unnecessary API calls
   // const baseEvolutionURL = 'https://pokeapi.co/api/v2/evolution-chain/';
 
-  let baseImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/`
-
   const fetchPokemonData = (name) => {
     let pokemonID = pokemon.getId(name); // pokemon.getId(pokemon.random());
     let pokeData = {}
@@ -64,6 +62,8 @@ const App = () => {
         pokeData.base_experience = data1.data.base_experience;
         pokeData.sprites = data1.data.sprites;
         pokeData.image = data1.data.sprites.other.dream_world.front_default;
+        pokeData.abilities = data1.data.abilities;
+        pokeData.stats = data1.data.stats;
 
         // Gets the description in English. Some pokemon have descriptions that are not
         // English first. This goes through the array and finds the first description set that is 
@@ -72,12 +72,17 @@ const App = () => {
           return set.language.name === "en"
         }).flavor_text; // description of our pokemon
         pokeData.descriptions = data2.data.flavor_text_entries;
+        pokeData.species = data2.data.genera.find(set => {
+          return set.language.name === "en"
+        }).genus;
+        pokeData.speciesSet = data2.data.genera;
         pokeData.is_legendary = data2.data.is_legendary;
         pokeData.is_mythical = data2.data.is_mythical;
         pokeData.evolution_chain_URL = data2.data.evolution_chain.url;
 
         pokeData.habitat = data2.data.habitat;
         pokeData.generation = data2.data.generation;
+        pokeData.color = data2.data.color.name;
 
         return axios.get(pokeData.evolution_chain_URL)
       }))

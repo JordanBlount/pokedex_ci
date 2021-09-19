@@ -10,3 +10,32 @@
     align-items: center;
     justify-content: flex-start;
 }
+
+.stat-section {
+    width: 100%;
+}
+
+.stat-section:first-child {
+    margin-top: 0.75em;
+}
+
+.stat-section:not(:first-child) {
+    margin-top: 0.75em;
+}
+
+.stat-section__header {
+    font-size: 1.5rem;
+    margin-bottom: 0.25em;
+}
+
+.green_header {
+    color: #88D0C4;
+}
+
+.stat-1 {
+    font-size: 1.125rem;
+}
+
+.stat-1:not(:last-child) {
+    margin-bottom: 0.625rem;
+}

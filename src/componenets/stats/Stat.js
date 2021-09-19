@@ -1,10 +1,8 @@
 import React from 'react';
 
-const Stat = () => {
+const Stat = (props) => {
     return (
-        <div className="stat">
-            
-        </div>
+        <div className="stat-1"><span style={{fontWeight: 700}}>{`${props.name}:`}</span> {props.value}</div>
     );
 };
 

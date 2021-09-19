@@ -27,7 +27,8 @@ const Section = (props) => {
 
     // Converting weight from hectograms to kilograms to pounds.
     const setWeight = (weight) => {
-        return convert((weight * 0.1)).from('kg').to('lb');
+        let toPounds = convert((weight * 0.1)).from('kg').to('lb');
+        return `${toPounds.toFixed(0)} lbs`;
     }
 
     const openDetails = () => {
@@ -49,10 +50,10 @@ const Section = (props) => {
                 <div className="stat in-table">
                     <p className="stat-title">Weight</p>
                     {/* setWeight(props.pokemonData.weight).toFixed(1) */}
-                    <p className="stat-data">{`${setWeight(props.pokemonData.weight).toFixed(0)} lbs`}</p>
+                    <p className="stat-data">{`${setWeight(props.pokemonData.weight)}`}</p>
                 </div>
                 <div id="more-info" onClick={openDetails}>
-                    <img src={right_arrow}></img>
+                    <img src={right_arrow} alt="right arrow"></img>
                 </div>
             </div>
         </div>

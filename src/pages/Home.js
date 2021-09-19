@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react';
-
 import pokeball from '../assets/pokeball.svg'
 import pokemonLogo from '../assets/pokemon_logo.svg'
 
