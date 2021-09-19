@@ -17,6 +17,11 @@ This is my second project for Per Scholas. This was a project that was based on 
   - Photo (if there is one)
   - Types
   - Description (currently in English only)
+  - Stats
+    - Height
+    - Weight
+    - Species
+    - Etc...
 - Directly link to pokemon
   - https://react-pokedex-blt.herokuapp.com/pokemon/243
   - https://react-pokedex-blt.herokuapp.com/pokemon/entei
