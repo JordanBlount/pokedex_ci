@@ -10,33 +10,22 @@ import Stats from './pages/Stats.js'
 
 import './css/App.css'
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPokemon, setPokemonData } from './actions/pokemonAction';
+import { setSearch } from './actions/searchAction';
 
 const App = () => {
 
   // Using the history from React Router to change pages
   const history = useHistory();
   const location = useLocation();
-
   const dispatch = useDispatch();
 
-  const [pokemonData, setPokemonData] = useState({
-    default: true,
-    name: 'Loading...',
-    id: 900,
-    types: [],
-    height: 0,
-    weight: 0,
-    sprites: [],
-    image: null,
-    description: 'This is the ilusive pokemon that never appears.',
-    evolution_chain_URL: null
-  })
-
-  const [searchBar, showSearchBar] = useState(true);
+  const pokemonData = useSelector(state => state.pokemonData);
 
   // TODO: This could be an integer or string. Make sure to use typeOf to determine that
-  const [search, setSearch] = useState('')
+  const search = useSelector(state => state.search)
+  const searchBar = useSelector(state => state.searchBar);
 
   const baseNormalURL = 'https://pokeapi.co/api/v2/pokemon/'; // Ex: https://pokeapi.co/api/v2/pokemon/1/
 
@@ -89,34 +78,30 @@ const App = () => {
 
         return axios.get(pokeData.evolution_chain_URL)
       }))
-        .then(response => {
-          pokeData.chain = response.data.chain;
-          // Stops use from making unnecessary API calls
-          if(pokeData.chain !== undefined) {
-            // let firstChain = pokeData.chain;
-            // let secondChain = firstChain.evolves_to[0];
-            // let secondPokemonId = secondChain.species.url.charAt(secondChain.species.url.length - 1);
-            // let firstLevelUp = secondChain.evolution_details[0].min_level;
-            // let firstLevelImg = `${baseImageUrl}${secondPokemonId}.svg`
-      
-            // let thirdChain = secondChain.evolves_to[0];
-            // let thirdPokemonId = thirdChain.species.url.charAt(thirdChain.species.url.length - 1);
-            // let secondLevelUp = thirdChain.evolution_details[0].min_level;
-            // let secondLevelImg = `${baseImageUrl}${thirdPokemonId}.svg`
-          }
-          pokeData.default = false;
-          setPokemonData(pokeData);
-          setSearch('');
-        });
-  }
+      .then(response => {
+        pokeData.chain = response.data.chain;
+        // Stops use from making unnecessary API calls
+        if (pokeData.chain !== undefined) {
+          // let firstChain = pokeData.chain;
+          // let secondChain = firstChain.evolves_to[0];
+          // let secondPokemonId = secondChain.species.url.charAt(secondChain.species.url.length - 1);
+          // let firstLevelUp = secondChain.evolution_details[0].min_level;
+          // let firstLevelImg = `${baseImageUrl}${secondPokemonId}.svg`
 
-  const updateSearch = (event) => {
-    setSearch(event.target.value);
+          // let thirdChain = secondChain.evolves_to[0];
+          // let thirdPokemonId = thirdChain.species.url.charAt(thirdChain.species.url.length - 1);
+          // let secondLevelUp = thirdChain.evolution_details[0].min_level;
+          // let secondLevelImg = `${baseImageUrl}${thirdPokemonId}.svg`
+        }
+        pokeData.default = false;
+        dispatch(setPokemonData(pokeData));
+        dispatch(setSearch(''));
+      });
   }
 
   // Sets 'search' to be the default value for text
   const submitSearch = (event, text = search, input = true) => {
-    if(text === '') {
+    if (text === '') {
       return;
     }
     if (!isNaN(text)) {
@@ -128,7 +113,7 @@ const App = () => {
       } else {
         if (input) {
           alert("This pokemon does not exist");
-          setSearch('');
+          dispatch(setSearch(''));
         } else {
           // Takes us to the homepage if the pokemon does not exist
           history.push('/')
@@ -144,7 +129,7 @@ const App = () => {
       } else {
         if (input) {
           alert("This pokemon does not exist");
-          setSearch('');
+          dispatch(setSearch(''));
         } else {
           // Takes us to the homepage if the pokemon does not exist
           history.push('/')
@@ -156,21 +141,21 @@ const App = () => {
   return (
     // Sets the background color for the page based on the current location. If '/', sets it to red
     <div id='app' className={`${location.pathname === '/' ? 'start_color' : ''}`}>
-      <NavBar pokemonData={pokemonData} isHome={pokemonData.default} setPokemonData={setPokemonData} showSearchBar={showSearchBar}/>
+      <NavBar/>
       <Switch>
         <Route exact path='/'>
-          <Home pokemonData={pokemonData} showSearchBar={showSearchBar} />
+          <Home />
         </Route>
         <Route exact path='/pokemon/:id'>
-          <Pokemon pokemonData={pokemonData} submitSearch={submitSearch} showSearchBar={showSearchBar} />
+          <Pokemon submitSearch={submitSearch}/>
         </Route>
         <Route exact path='/pokemon/:id/stats/:stat'>
-          <Stats pokemonData={pokemonData} showSearchBar={showSearchBar} />
+          <Stats />
         </Route>
       </Switch>
       <div style={{ display: searchBar ? 'flex' : 'none' }} className={`end ${location.pathname === '/' ? 'start_color' : ''}`}>
         <div id="searchBar">
-          <input id="searchText" type='text' value={search} onChange={updateSearch} />
+          <input id="searchText" type='text' value={search} onChange={(event) => dispatch(setSearch(event.target.value))} />
           <button id="searchBtn" onClick={submitSearch}>Search</button>
         </div>
       </div>

@@ -21,7 +21,7 @@ const pokemonReducer = (state = initialState, action) => {
     switch (action.type) {
         // Sets the new pokemon data
         case 'SET_POKEMON':
-            return state;
+            return action.payload;
 
         default:
             return state

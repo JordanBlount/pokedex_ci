@@ -1,7 +1,7 @@
 export const searchReducer = (state = '', action) => {
     switch(action.type) {
         case 'SET_SEARCH':
-            return state;
+            return action.payload;
         
         default: 
             return state;
@@ -10,11 +10,8 @@ export const searchReducer = (state = '', action) => {
 
 export const searchBarReducer = (state = true, action) => {
     switch(action.type) {
-        case 'SEARCH_BAR':
-            return true;
-
-        case 'HIDE_SEARCH':
-            return false;
+        case 'SHOW_SEARCH':
+            return action.payload;
             
         default:
             return state;

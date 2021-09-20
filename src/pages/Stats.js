@@ -6,11 +6,16 @@ import convert from 'convert-units';
 import Stat from '../componenets/stats/Stat';
 
 import '../css/Stats.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { hideSearchBar, showSearchBar } from '../actions/searchAction';
 
 const Stats = (props) => {
 
     const history = useHistory();
     const params = useParams();
+    const dispatch = useDispatch();
+
+    const pokemonData = useSelector(state => state.pokemonData);
 
     const paths = ['details'];
 
@@ -34,9 +39,9 @@ const Stats = (props) => {
 
     const getAbilities = () => {
         let final = '';
-        props.pokemonData.abilities.map((item, index) => {
+        pokemonData.abilities.map((item, index) => {
             final += `${capitalize(item.ability.name)}${item.is_hidden ? " (Hidden Ability), " : ", "}`;
-            if(index === props.pokemonData.abilities.length - 1) {
+            if(index === pokemonData.abilities.length - 1) {
                 final = final.substring(0, final.length - 2);
             }
             return final
@@ -54,18 +59,18 @@ const Stats = (props) => {
     }
 
     useEffect(()=> {
-        props.showSearchBar(false);
+        dispatch(showSearchBar(false));
         // NOTE: Redo this routing because I am not even sure what I was doing lol
         // TODO: Make it so that these pages are not accessible unless you have actually search for OR opened a link directly to a pokemon (state has non-default data in it)
         if(!Number.isNaN(parseInt(params.stat))) {
-            if(props.pokemonData.default) {
+            if(pokemonData.default) {
                 history.push(`/`);
             } else {
                 history.push(`/pokemon/${params.id}`);
             }
         }
         if(!paths.includes(params.stat.toLowerCase())) {
-            props.showSearchBar(true);
+            dispatch(showSearchBar(true));
             history.push('/');
         }
     }, []);
@@ -74,17 +79,17 @@ const Stats = (props) => {
         <div id="stats" className='page'>
             <div className="stat-section">
                 <h1 className="stat-section__header green_header">Pokemon Data</h1>
-                <Stat name="Height" value={setHeight(props.pokemonData.height)}/>
-                <Stat name="Weight" value={setWeight(props.pokemonData.weight)}/>
-                <Stat name="Species" value={props.pokemonData.species}/>
+                <Stat name="Height" value={setHeight(pokemonData.height)}/>
+                <Stat name="Weight" value={setWeight(pokemonData.weight)}/>
+                <Stat name="Species" value={pokemonData.species}/>
                 {
-                    props.pokemonData.abilities.length > 0 ? <Stat name="Abilities" value={getAbilities()}/> : ''
+                    pokemonData.abilities.length > 0 ? <Stat name="Abilities" value={getAbilities()}/> : ''
                 }
             </div>
             <div className="stat-section">
                 <h1 className="stat-section__header green_header">Stats</h1>    
                 {
-                    props.pokemonData.stats.map((item, index) => (
+                    pokemonData.stats.map((item, index) => (
                         <Stat key={index} name={fixName(item.stat.name)} value={`${item.base_stat} (base)`} />
                     ))
                 }

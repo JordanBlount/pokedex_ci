@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
+
 import Board from '../componenets/Board';
 
 const Pokemon = (props) => {
@@ -8,22 +10,24 @@ const Pokemon = (props) => {
     const history = useHistory();
     const { id } = useParams();
 
+    const pokemonData = useSelector(state => state.pokemonData);
+
     useEffect(() => {
         // Check to see if the state in App.js is default. If so, we fetch a new pokemon
-        if(props.pokemonData.default) {
+        if(pokemonData.default) {
             // NOTE: Gets the pokemon based on the current id (we get this from React Router);
             props.submitSearch(null, id, false);
         } else {
             console.log("Got here");
             // Checks to see if id is an integer
             if(!Number.isNaN(id)) {
-                if(props.pokemonData.id === parseInt(id)) {
+                if(pokemonData.id === parseInt(id)) {
                     // Nothing happens.... The page should not refresh.
                 } else {
                     props.submitSearch(null, id, false);
                 }
             } else if(typeof id === 'string') {
-                if(props.pokemonData.name.toLowerCase() === id.toLowerCase()) {
+                if(pokemonData.name.toLowerCase() === id.toLowerCase()) {
                     // nothing happens...The page should not refresh.
                 } else {
                     props.submitSearch(null, id.toLowerCase(), false);
@@ -37,7 +41,7 @@ const Pokemon = (props) => {
     
     return (
         <div className="pokemon page">
-            <Board pokemonData={props.pokemonData} showSearchBar={props.showSearchBar}/>
+            <Board />
         </div>
     );
 };

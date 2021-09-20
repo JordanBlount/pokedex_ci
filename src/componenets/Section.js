@@ -1,5 +1,7 @@
 import convert from 'convert-units';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
+import { showSearchBar } from '../actions/searchAction';
 
 import right_arrow from '../assets/right_arrow.svg';
 
@@ -7,6 +9,8 @@ const Section = (props) => {
 
     const history = useHistory();
     const params = useParams();
+
+    const dispatch = useDispatch();
 
     // Converting height from decimeters to centimeters to inches
     // const setHeight = (height) => {
@@ -32,7 +36,7 @@ const Section = (props) => {
     }
 
     const openDetails = () => {
-        props.showSearchBar(false);
+        dispatch(showSearchBar(false));
         history.push(`/pokemon/${params.id}/stats/details`);
     }
 

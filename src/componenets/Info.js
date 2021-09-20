@@ -1,16 +1,20 @@
+import { useSelector } from 'react-redux';
+
 import Section from './Section';
 
 import EvolutionTable from './EvolutionTable'
 
 const Info = (props) => {
 
+    const pokemonData = useSelector(state => state.pokemonData);
+
     return (
         <div id="info">
             <p className="pokemon-description">
-                {props.pokemonData.description}
+                {pokemonData.description}
             </p>
-            <Section pokemonData={props.pokemonData} showSearchBar={props.showSearchBar}/>
-            <EvolutionTable pokemonData={props.pokemonData} />
+            <Section pokemonData={pokemonData}/>
+            <EvolutionTable pokemonData={pokemonData} />
             {/* <Section pokemonData={props.pokemonData}/> */}
             {/* <Section pokemonData={props.pokemonData}/> */}
         </div>

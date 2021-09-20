@@ -2,11 +2,17 @@
 import logo from '../assets/logo.svg'
 import back_arrow from '../assets/back_arrow.svg';
 import { useHistory, useLocation } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { showSearchBar } from '../actions/searchAction';
+import { setPokemonData } from '../actions/pokemonAction';
 
 const NavBar = (props) => {
 
     const location = useLocation();
     const history = useHistory();
+    const dispatch = useDispatch();
+
+    const pokemonData = useSelector(state => state.pokemonData);
 
     // Handles my routing system to go back to the previous page
     const goBack = () => {
@@ -15,24 +21,24 @@ const NavBar = (props) => {
             case `/`:
                 break;
 
-            case `/pokemon/${props.pokemonData.id}`:
+            case `/pokemon/${pokemonData.id}`:
                 history.push('/');
                 resetData();
                 break;
 
-            case `/pokemon/${props.pokemonData.name}`:
+            case `/pokemon/${pokemonData.name}`:
                 history.push('/');
                 resetData();
                 break;
 
-            case `/pokemon/${props.pokemonData.id}/stats/details`:
-                props.showSearchBar(true);
-                history.push(`/pokemon/${props.pokemonData.id}`);
+            case `/pokemon/${pokemonData.id}/stats/details`:
+                dispatch(showSearchBar(true));
+                history.push(`/pokemon/${pokemonData.id}`);
                 break;
 
-            case `/pokemon/${props.pokemonData.name}/stats/details`:
-                props.showSearchBar(true);
-                history.push(`/pokemon/${props.pokemonData.name}`);
+            case `/pokemon/${pokemonData.name}/stats/details`:
+                dispatch(showSearchBar(true));
+                history.push(`/pokemon/${pokemonData.name}`);
                 break;
 
             // By default, it sends you the page you just came from to handle edge cases
@@ -44,18 +50,18 @@ const NavBar = (props) => {
 
     // TODO: Remove 'props.setPokemonData' once Redux is implemented
     const resetData = () => {
-        props.setPokemonData({
-          default: true,
-          name: 'Loading...',
-          id: 900,
-          types: [],
-          height: 0,
-          weight: 0,
-          sprites: [],
-          image: null,
-          description: 'This is the ilusive pokemon that never appears.',
-          evolution_chain_URL: null
-        });
+        dispatch(setPokemonData({
+            default: true,
+            name: 'Loading...',
+            id: 900,
+            types: [],
+            height: 0,
+            weight: 0,
+            sprites: [],
+            image: null,
+            description: 'This is the ilusive pokemon that never appears.',
+            evolution_chain_URL: null
+          }));
       }
 
     return (
