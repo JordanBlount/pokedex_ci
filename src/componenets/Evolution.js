@@ -1,8 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import noPokemonImg from '../assets/no-image.svg';
 
 const Evolution = (props) => {
+
+    const history = useHistory();
 
     // FIXME: Do not use this to check if they exist. This should also be asychronous
     const imageExists = (image_url) => {
@@ -18,9 +22,13 @@ const Evolution = (props) => {
     return (
         <div className="evolution">
             {/* 2 pokemon with a level in-between them. The images (sprites) are going to be passed through props */}
-            <img className="pokemon-current-form pokemon-img" src={imageExists(props.firstImg) ? props.firstImg : noPokemonImg} alt="First Pokemon"></img>
+            {/* <Link to={`/pokemon/${props.firstId}`}> */}
+                <img className="pokemon-current-form pokemon-img" src={imageExists(props.firstImg) ? props.firstImg : noPokemonImg} alt="First Pokemon"></img>
+            {/* </Link> */}
             <div className="level-up">{props.levelUp === null ? 'Level ???' : `Level ${props.levelUp}`}</div>
-            <img className="pokemon_evolved-form pokemon-img" src={imageExists(props.secondImg) ? props.secondImg : noPokemonImg} alt="Second Pokemon"></img>
+            {/* <Link to={`/pokemon/${props.secondId}`}> */}
+                <img className="pokemon_evolved-form pokemon-img" src={imageExists(props.secondImg) ? props.secondImg : noPokemonImg} alt="Second Pokemon"></img>
+            {/* </Link> */}
         </div>
     );
 };

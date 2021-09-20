@@ -46,7 +46,7 @@ const NavBar = (props) => {
     const resetData = () => {
         props.setPokemonData({
           default: true,
-          name: 'default',
+          name: 'Loading...',
           id: 900,
           types: [],
           height: 0,

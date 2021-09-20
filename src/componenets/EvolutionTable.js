@@ -30,7 +30,9 @@ const EvolutionTable = (props) => {
 
             chains.push({
                 firstImg: firstPokemonImg,
+                firstId: firstPokemonId,
                 secondImg: null,
+                secondId: null,
                 levelUp: null
             })
 
@@ -42,11 +44,14 @@ const EvolutionTable = (props) => {
                 let secondPokemonImg = `${baseImageUrl}${secondPokemonId}.svg`
 
                 chains[0].secondImg = secondPokemonImg;
+                chains[0].secondId = secondPokemonId;
                 chains[0].levelUp = secondLevelUp;
 
                 chains.push({
                     firstImg: secondPokemonImg,
+                    firstId: secondPokemonId,
                     secondImg: null,
+                    secondId: null,
                     levelUp: null
                 })
             } else {
@@ -61,6 +66,7 @@ const EvolutionTable = (props) => {
                 let thirdPokemonImg = `${baseImageUrl}${thirdPokemonId}.svg`
 
                 chains[1].secondImg = thirdPokemonImg;
+                chains[1].secondId = thirdPokemonId;
                 chains[1].levelUp = thirdLevelUp;
 
             } else {
@@ -73,7 +79,7 @@ const EvolutionTable = (props) => {
                     <div className="evolution_table">
                         {
                             chains.map((chain, index) => (
-                                <Evolution key={index} firstImg={chain.firstImg} secondImg={chain.secondImg} levelUp={chain.levelUp} />
+                                <Evolution key={index} firstImg={chain.firstImg} firstId={chain.firstId} secondImg={chain.secondImg} secondId={chain.secondId} levelUp={chain.levelUp} />
                             ))
                         }
                     </div>

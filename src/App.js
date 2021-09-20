@@ -10,6 +10,7 @@ import Stats from './pages/Stats.js'
 
 import './css/App.css'
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const App = () => {
 
@@ -17,9 +18,11 @@ const App = () => {
   const history = useHistory();
   const location = useLocation();
 
+  const dispatch = useDispatch();
+
   const [pokemonData, setPokemonData] = useState({
     default: true,
-    name: 'default',
+    name: 'Loading...',
     id: 900,
     types: [],
     height: 0,
