@@ -78,7 +78,7 @@ const Stats = (props) => {
     return (
         <div id="stats" className='page'>
             <div className="stat-section">
-                <h1 className="stat-section__header green_header">Pokemon Data</h1>
+                <h1 className={`stat-section__header ${pokemonData.color}_header`}>Pokemon Data</h1>
                 <Stat name="Height" value={setHeight(pokemonData.height)}/>
                 <Stat name="Weight" value={setWeight(pokemonData.weight)}/>
                 <Stat name="Species" value={pokemonData.species}/>
@@ -87,7 +87,7 @@ const Stats = (props) => {
                 }
             </div>
             <div className="stat-section">
-                <h1 className="stat-section__header green_header">Stats</h1>    
+                <h1 className={`stat-section__header ${pokemonData.color}_header`}>Stats</h1>    
                 {
                     pokemonData.stats.map((item, index) => (
                         <Stat key={index} name={fixName(item.stat.name)} value={`${item.base_stat} (base)`} />

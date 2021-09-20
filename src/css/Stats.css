@@ -28,10 +28,43 @@
 .stat-section__header {
     font-size: 1.5rem;
     margin-bottom: 0.25em;
+    color: #88D0C4;
+}
+
+.black_header {
+    color: #2F2F29;
+}
+
+.blue_header {
+    color: #88BBD0;
+}
+
+.brown_header {
+    color: #D0AF88;
+}
+
+.gray_header {
+    color: #A3A2A1;   
 }
 
 .green_header {
     color: #88D0C4;
+}
+
+.pink_header {
+    color: #D0889A;
+}
+
+.purple_header {
+    color: #BE88D0;
+}
+
+.red_header {
+    color: #D08888;
+}
+
+.yellow_header {
+    color: #CFD088;
 }
 
 .stat-1 {
