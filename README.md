@@ -1,4 +1,4 @@
-**# Pokedex** 
+# Pokedex
 
 [Link](https://lively-faun-2dd392.netlify.app/)
 
