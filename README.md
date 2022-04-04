@@ -1,12 +1,10 @@
 **# Pokedex** 
 
-[Link](https://react-pokedex-blt.herokuapp.com/)
+[Link](https://lively-faun-2dd392.netlify.app/)
 
-The Pokedex allows you to look up your favorite pokemon to see their stats. You can search by name and id! There are currently: **898** pokemon in the database. You can also directly link to pokemon pages (e.g. [Here](https://react-pokedex-blt.herokuapp.com/pokemon/entei))
+The Pokedex allows you to look up your favorite pokemon to see their stats. You can search by name and id! There are currently: **898** pokemon in the database. You can also directly link to pokemon pages (e.g. [Here](https://lively-faun-2dd392.netlify.app/pokemon/entei)
 
 <br>
-
-This is my second project for Per Scholas. This was a project that was based on a previous group assignment that I wanted to expand upon. 
 
 ## Features
 
@@ -23,8 +21,8 @@ This is my second project for Per Scholas. This was a project that was based on 
     - Species
     - Etc...
 - Directly link to pokemon
-  - https://react-pokedex-blt.herokuapp.com/pokemon/243
-  - https://react-pokedex-blt.herokuapp.com/pokemon/entei
+  - https://lively-faun-2dd392.netlify.app/pokemon/243
+  - https://lively-faun-2dd392.netlify.app/pokemon/entei
 - Mobile version (desktop coming soon)
 
 
