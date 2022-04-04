@@ -1,13 +1,13 @@
 import convert from 'convert-units';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { showSearchBar } from '../actions/searchAction';
 
 import right_arrow from '../assets/right_arrow.svg';
 
 const Section = (props) => {
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const params = useParams();
 
     const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const Section = (props) => {
 
     const openDetails = () => {
         dispatch(showSearchBar(false));
-        history.push(`/pokemon/${params.id}/stats/details`);
+        navigate.push(`/pokemon/${params.id}/stats/details`);
     }
 
     return (

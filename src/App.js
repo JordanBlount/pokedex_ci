@@ -9,7 +9,7 @@ import Pokemon from './pages/Pokemon.js';
 import Stats from './pages/Stats.js'
 
 import './css/App.css'
-import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPokemonData } from './actions/pokemonAction';
 import { setSearch } from './actions/searchAction';
@@ -17,7 +17,7 @@ import { setSearch } from './actions/searchAction';
 const App = () => {
 
   // Using the history from React Router to change pages
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -96,14 +96,14 @@ const App = () => {
       if (id > 0 && id < 898) {
         let name = pokemon.getName(parseInt(text));
         fetchPokemonData(name);
-        history.push(`/pokemon/${id}`);
+        navigate.push(`/pokemon/${id}`);
       } else {
         if (input) {
           alert("This pokemon does not exist");
           dispatch(setSearch(''));
         } else {
           // Takes us to the homepage if the pokemon does not exist
-          history.push('/')
+          navigate.push('/')
         }
       }
     } else {
@@ -112,14 +112,14 @@ const App = () => {
       // Checks to see if the pokemon actually exist
       if (pokemon.all().includes(text)) {
         fetchPokemonData(text);
-        history.push(`/pokemon/${text.toLowerCase()}`);
+        navigate.push(`/pokemon/${text.toLowerCase()}`);
       } else {
         if (input) {
           alert("This pokemon does not exist");
           dispatch(setSearch(''));
         } else {
           // Takes us to the homepage if the pokemon does not exist
-          history.push('/')
+          navigate.push('/')
         }
       }
     }
@@ -129,7 +129,7 @@ const App = () => {
     // Sets the background color for the page based on the current location. If '/', sets it to red
     <div id='app' className={`${location.pathname === '/' ? 'start_color' : ''}`}>
       <NavBar/>
-      <Switch>
+      <Routes>
         <Route exact path='/'>
           <Home />
         </Route>
@@ -139,7 +139,7 @@ const App = () => {
         <Route exact path='/pokemon/:id/stats/:stat'>
           <Stats />
         </Route>
-      </Switch>
+      </Routes>
       <div style={{ display: searchBar ? 'flex' : 'none' }} className={`end ${location.pathname === '/' ? 'start_color' : ''}`}>
         <div id="searchBar">
           <input id="searchText" type='text' value={search} onChange={(event) => dispatch(setSearch(event.target.value))} />

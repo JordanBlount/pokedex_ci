@@ -1,7 +1,7 @@
 // Imported SVG file so it would show up correctly. I couldn't place it directly in the img src
 import logo from '../assets/logo.svg'
 import back_arrow from '../assets/back_arrow.svg';
-import { useHistory, useLocation } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { showSearchBar } from '../actions/searchAction';
 import { setPokemonData } from '../actions/pokemonAction';
@@ -9,7 +9,7 @@ import { setPokemonData } from '../actions/pokemonAction';
 const NavBar = (props) => {
 
     const location = useLocation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const pokemonData = useSelector(state => state.pokemonData);
@@ -22,28 +22,28 @@ const NavBar = (props) => {
                 break;
 
             case `/pokemon/${pokemonData.id}`:
-                history.push('/');
+                navigate.push('/');
                 resetData();
                 break;
 
             case `/pokemon/${pokemonData.name}`:
-                history.push('/');
+                navigate.push('/');
                 resetData();
                 break;
 
             case `/pokemon/${pokemonData.id}/stats/details`:
                 dispatch(showSearchBar(true));
-                history.push(`/pokemon/${pokemonData.id}`);
+                navigate.push(`/pokemon/${pokemonData.id}`);
                 break;
 
             case `/pokemon/${pokemonData.name}/stats/details`:
                 dispatch(showSearchBar(true));
-                history.push(`/pokemon/${pokemonData.name}`);
+                navigate.push(`/pokemon/${pokemonData.name}`);
                 break;
 
             // By default, it sends you the page you just came from to handle edge cases
             default:
-                history.goBack();
+                navigate.goBack();
                 break;
         }
     }

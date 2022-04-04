@@ -1,12 +1,12 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import noPokemonImg from '../assets/no-image.svg';
 
 const Evolution = (props) => {
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     // FIXME: Do not use this to check if they exist. This should also be asychronous
     const imageExists = (image_url) => {

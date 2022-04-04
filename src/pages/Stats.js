@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import convert from 'convert-units';
 
@@ -11,7 +11,7 @@ import { hideSearchBar, showSearchBar } from '../actions/searchAction';
 
 const Stats = (props) => {
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const params = useParams();
     const dispatch = useDispatch();
 
@@ -64,14 +64,14 @@ const Stats = (props) => {
         // TODO: Make it so that these pages are not accessible unless you have actually search for OR opened a link directly to a pokemon (state has non-default data in it)
         if(!Number.isNaN(parseInt(params.stat))) {
             if(pokemonData.default) {
-                history.push(`/`);
+                navigate.push(`/`);
             } else {
-                history.push(`/pokemon/${params.id}`);
+                navigate.push(`/pokemon/${params.id}`);
             }
         }
         if(!paths.includes(params.stat.toLowerCase())) {
             dispatch(showSearchBar(true));
-            history.push('/');
+            navigate.push('/');
         }
     }, []);
 
@@ -102,4 +102,4 @@ const Stats = (props) => {
     );
 };
 
-export default Stats;
+export default Stats

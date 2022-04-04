@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
@@ -7,7 +7,7 @@ import Board from '../componenets/Board';
 
 const Pokemon = (props) => {
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const { id } = useParams();
 
     const pokemonData = useSelector(state => state.pokemonData);
@@ -34,7 +34,7 @@ const Pokemon = (props) => {
                 }
             } else {
                 // NOTE:
-                history.push('/');
+                navigate.push('/');
             }
         }
     }, []);
