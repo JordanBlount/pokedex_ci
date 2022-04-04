@@ -2,9 +2,11 @@
 
 [Link](https://lively-faun-2dd392.netlify.app/)
 
-The Pokedex allows you to look up your favorite pokemon to see their stats. You can search by name and id! There are currently: **898** pokemon in the database. You can also directly link to pokemon pages (e.g. [Here](https://lively-faun-2dd392.netlify.app/pokemon/entei)
+The Pokedex allows you to look up your favorite pokemon to see their stats. You can search by name and id! There are currently: **898** pokemon in the database. You can also directly link to pokemon pages (e.g. [Here](https://lively-faun-2dd392.netlify.app/pokemon/entei))
 
 <br>
+
+![Desktop](https://github.com/JordanBlount/pokedex/blob/main/screenshots/screenshot4.png)
 
 ## Features
 
@@ -29,6 +31,8 @@ The Pokedex allows you to look up your favorite pokemon to see their stats. You 
 ## Wireframes
 
 ![Mobile](https://raw.githubusercontent.com/JordanBlount/pokedex/main/wireframes/mobile.png)
+
+![Desktop](https://github.com/JordanBlount/pokedex/blob/main/wireframes/desktop.png)
 
 ## Tech Used
 **Client:** React.js, Axios, React Router, Redux
