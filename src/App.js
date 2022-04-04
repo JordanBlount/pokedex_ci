@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import pokemon from 'pokemon';
 import axios from 'axios';
 
@@ -20,8 +20,6 @@ const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-
-  const pokemonData = useSelector(state => state.pokemonData);
 
   // TODO: This could be an integer or string. Make sure to use typeOf to determine that
   const search = useSelector(state => state.search)
@@ -96,14 +94,14 @@ const App = () => {
       if (id > 0 && id < 898) {
         let name = pokemon.getName(parseInt(text));
         fetchPokemonData(name);
-        navigate.push(`/pokemon/${id}`);
+        navigate(`/pokemon/${id}`);
       } else {
         if (input) {
           alert("This pokemon does not exist");
           dispatch(setSearch(''));
         } else {
           // Takes us to the homepage if the pokemon does not exist
-          navigate.push('/')
+          navigate('/')
         }
       }
     } else {
@@ -112,14 +110,14 @@ const App = () => {
       // Checks to see if the pokemon actually exist
       if (pokemon.all().includes(text)) {
         fetchPokemonData(text);
-        navigate.push(`/pokemon/${text.toLowerCase()}`);
+        navigate(`/pokemon/${text.toLowerCase()}`);
       } else {
         if (input) {
           alert("This pokemon does not exist");
           dispatch(setSearch(''));
         } else {
           // Takes us to the homepage if the pokemon does not exist
-          navigate.push('/')
+          navigate('/')
         }
       }
     }

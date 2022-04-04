@@ -34,9 +34,10 @@ const Pokemon = (props) => {
                 }
             } else {
                 // NOTE:
-                navigate.push('/');
+                navigate('/');
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     return (

@@ -1,6 +1,5 @@
 const SET_SEARCH = "SET_SEARCH";
 const SHOW_SEARCH = "SHOW_SEARCH";
-const HIDE_SEARCH = "HIDE_SEARCH";
 
 export const setSearch = (name) => {
     return {

@@ -22,23 +22,23 @@ const NavBar = (props) => {
                 break;
 
             case `/pokemon/${pokemonData.id}`:
-                navigate.push('/');
+                navigate('/');
                 resetData();
                 break;
 
             case `/pokemon/${pokemonData.name}`:
-                navigate.push('/');
+                navigate('/');
                 resetData();
                 break;
 
             case `/pokemon/${pokemonData.id}/stats/details`:
                 dispatch(showSearchBar(true));
-                navigate.push(`/pokemon/${pokemonData.id}`);
+                navigate(`/pokemon/${pokemonData.id}`);
                 break;
 
             case `/pokemon/${pokemonData.name}/stats/details`:
                 dispatch(showSearchBar(true));
-                navigate.push(`/pokemon/${pokemonData.name}`);
+                navigate(`/pokemon/${pokemonData.name}`);
                 break;
 
             // By default, it sends you the page you just came from to handle edge cases

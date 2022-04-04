@@ -1,5 +1,5 @@
 import convert from 'convert-units';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 import { showSearchBar } from '../actions/searchAction';
 
@@ -37,7 +37,7 @@ const Section = (props) => {
 
     const openDetails = () => {
         dispatch(showSearchBar(false));
-        navigate.push(`/pokemon/${params.id}/stats/details`);
+        navigate(`/pokemon/${params.id}/stats/details`);
     }
 
     return (

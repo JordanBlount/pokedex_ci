@@ -7,7 +7,7 @@ import Stat from '../componenets/stats/Stat';
 
 import '../css/Stats.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideSearchBar, showSearchBar } from '../actions/searchAction';
+import { showSearchBar } from '../actions/searchAction';
 
 const Stats = (props) => {
 
@@ -64,15 +64,16 @@ const Stats = (props) => {
         // TODO: Make it so that these pages are not accessible unless you have actually search for OR opened a link directly to a pokemon (state has non-default data in it)
         if(!Number.isNaN(parseInt(params.stat))) {
             if(pokemonData.default) {
-                navigate.push(`/`);
+                navigate(`/`);
             } else {
-                navigate.push(`/pokemon/${params.id}`);
+                navigate(`/pokemon/${params.id}`);
             }
         }
         if(!paths.includes(params.stat.toLowerCase())) {
             dispatch(showSearchBar(true));
-            navigate.push('/');
+            navigate('/');
         }
+       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
