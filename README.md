@@ -6,7 +6,7 @@ The Pokedex allows you to look up your favorite pokemon to see their stats. You 
 
 <br>
 
-![Desktop](https://github.com/JordanBlount/pokedex/blob/main/screenshots/screenshot4.png)
+![Desktop](https://github.com/JordanBlount/pokedex/blob/main/screenshots/screenshot6.png)
 
 ## Features
 
