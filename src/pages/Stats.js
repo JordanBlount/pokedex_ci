@@ -94,6 +94,10 @@ const Stats = (props) => {
                     ))
                 }
             </div>
+
+            {/* {
+                item.name === "" ? "" : <img src={item.image.url} alt={item.name} />
+            } */}
         </div>
     );
 };

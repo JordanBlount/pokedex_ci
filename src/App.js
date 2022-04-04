@@ -11,7 +11,7 @@ import Stats from './pages/Stats.js'
 import './css/App.css'
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPokemon, setPokemonData } from './actions/pokemonAction';
+import { setPokemonData } from './actions/pokemonAction';
 import { setSearch } from './actions/searchAction';
 
 const App = () => {
@@ -80,19 +80,6 @@ const App = () => {
       }))
       .then(response => {
         pokeData.chain = response.data.chain;
-        // Stops use from making unnecessary API calls
-        if (pokeData.chain !== undefined) {
-          // let firstChain = pokeData.chain;
-          // let secondChain = firstChain.evolves_to[0];
-          // let secondPokemonId = secondChain.species.url.charAt(secondChain.species.url.length - 1);
-          // let firstLevelUp = secondChain.evolution_details[0].min_level;
-          // let firstLevelImg = `${baseImageUrl}${secondPokemonId}.svg`
-
-          // let thirdChain = secondChain.evolves_to[0];
-          // let thirdPokemonId = thirdChain.species.url.charAt(thirdChain.species.url.length - 1);
-          // let secondLevelUp = thirdChain.evolution_details[0].min_level;
-          // let secondLevelImg = `${baseImageUrl}${thirdPokemonId}.svg`
-        }
         pokeData.default = false;
         dispatch(setPokemonData(pokeData));
         dispatch(setSearch(''));
