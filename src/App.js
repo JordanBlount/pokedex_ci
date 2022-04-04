@@ -130,15 +130,9 @@ const App = () => {
     <div id='app' className={`${location.pathname === '/' ? 'start_color' : ''}`}>
       <NavBar/>
       <Routes>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route exact path='/pokemon/:id'>
-          <Pokemon submitSearch={submitSearch}/>
-        </Route>
-        <Route exact path='/pokemon/:id/stats/:stat'>
-          <Stats />
-        </Route>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/pokemon/:id' element={<Pokemon submitSearch={submitSearch}/>} />
+        <Route exact path='/pokemon/:id/stats/:stat' element={<Stats />} />
       </Routes>
       <div style={{ display: searchBar ? 'flex' : 'none' }} className={`end ${location.pathname === '/' ? 'start_color' : ''}`}>
         <div id="searchBar">
