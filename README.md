@@ -1,8 +1,8 @@
 # Pokedex
 
-[Link](https://lively-faun-2dd392.netlify.app/)
+[Link](https://pokedex.fun)
 
-The Pokedex allows you to look up your favorite pokemon to see their stats. You can search by name and id! There are currently: **898** pokemon in the database. You can also directly link to pokemon pages (e.g. [Here](https://lively-faun-2dd392.netlify.app/pokemon/entei))
+The Pokedex allows you to look up your favorite pokemon to see their stats. You can search by name and id! There are currently: **898** pokemon in the database. You can also directly link to pokemon pages (e.g. [Here](https://pokedex.fun/pokemon/entei))
 
 <br>
 
@@ -23,8 +23,8 @@ The Pokedex allows you to look up your favorite pokemon to see their stats. You 
     - Species
     - Etc...
 - Directly link to pokemon
-  - https://lively-faun-2dd392.netlify.app/pokemon/243
-  - https://lively-faun-2dd392.netlify.app/pokemon/entei
+  - https://pokedex.fun/pokemon/243
+  - https://pokedex.fun/pokemon/entei
 - Mobile version (desktop coming soon)
 
 
