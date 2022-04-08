@@ -134,7 +134,7 @@ const App = () => {
       </Routes>
       <div style={{ display: searchBar ? 'flex' : 'none' }} className={`end ${location.pathname === '/' ? 'start_color' : ''}`}>
         <div id="searchBar">
-          <input id="searchText" type='text' value={search} onChange={(event) => dispatch(setSearch(event.target.value))} />
+          <input id="searchText" type='text' placeholder='Try typing "235" or "Entei"' value={search} onChange={(event) => dispatch(setSearch(event.target.value))} />
           <button id="searchBtn" onClick={submitSearch}>Search</button>
         </div>
       </div>
