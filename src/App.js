@@ -1,4 +1,3 @@
-import React from 'react';
 import pokemon from 'pokemon';
 import axios from 'axios';
 
@@ -84,6 +83,14 @@ const App = () => {
       });
   }
 
+  const onSubmitSearch = event => {
+    event.preventDefault();
+    event.stopPropagation();
+    if(search) {
+      submitSearch(null, search, true)
+    }
+  }
+
   // Sets 'search' to be the default value for text
   const submitSearch = (event, text = search, input = true) => {
     if (text === '') {
@@ -133,10 +140,10 @@ const App = () => {
         <Route exact path='/pokemon/:id/stats/:stat' element={<Stats />} />
       </Routes>
       <div style={{ display: searchBar ? 'flex' : 'none' }} className={`end ${location.pathname === '/' ? 'start_color' : ''}`}>
-        <div id="searchBar">
+        <form id="searchBar" onSubmit={onSubmitSearch}>
           <input id="searchText" type='text' placeholder='Try typing "235" or "Entei"' value={search} onChange={(event) => dispatch(setSearch(event.target.value))} />
-          <button id="searchBtn" onClick={submitSearch}>Search</button>
-        </div>
+          <button type="submit" id="searchBtn">Search</button>
+        </form>
       </div>
     </div>
   )
