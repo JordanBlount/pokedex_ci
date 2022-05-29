@@ -141,6 +141,7 @@ const App = () => {
         <Route exact path='/pokemon/:id/stats/:stat' element={<Stats />} />
       </Routes>
       <div style={{ display: searchBar ? 'flex' : 'none' }} className={`end ${location.pathname === '/' ? 'start_color' : ''}`}>
+        {/* NOTE: When you click the submit button, what triggers a search for the pokemon is the submit search function right here. */}
         <form id="searchBar" onSubmit={onSubmitSearch}>
           <input id="searchText" type='text' placeholder='Try typing "235" or "Entei"' value={search} onChange={(event) => dispatch(setSearch(event.target.value))} />
           <button type="submit" id="searchBtn">Search</button>

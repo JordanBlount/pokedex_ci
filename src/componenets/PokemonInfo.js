@@ -26,8 +26,6 @@ const PokemonInfo = (props) => {
     }
 
     return (
-        // FIXME: I need to fix this prop.pokemon.type because I want the info background to be colored based on the FIRST type that the pokemon is.
-        // ${pokemonData.types[0].type.name}
         <div className={`pokemon-info ${pokemonData.color}`}>
             <div className={`container`}>
                 <div className='identity'>
@@ -35,18 +33,11 @@ const PokemonInfo = (props) => {
                         <h1 className='pokemon-name'>{capitalize(pokemonData.name)}</h1>
                         <Badge isLegendary={pokemonData.is_legendary} />
                         <Badge isMythical={pokemonData.is_mythical} />
-                        {/* {
-                            pokemonData.is_legendary ? <img className="legendary" src={legendaryBadge} alt="legendary badge"></img> : null
-                        }
-                        {
-                            pokemonData.is_mythical ? <img className="mythical" src={mythicalBadge} alt="mythical badge"></img> : null
-                        } */}
                     </div>
                     <div className="identity_right-side">
                         <p className='pokemon-id'>{setId(pokemonData.id)}</p>
                     </div>
                 </div>
-
                 <div className="tag-container">
                     {
                         // Gets only the first 2 tags out of the types
@@ -55,7 +46,7 @@ const PokemonInfo = (props) => {
                         ))
                     }
                 </div>
-                <img className="pokemon-image" src={pokemonData.image !== null ? pokemonData.image : noPokemonImg} alt={pokemonData.name}></img>
+                <img className="pokemon-image" src={pokemonData.image ? pokemonData.image : noPokemonImg} alt={pokemonData.name}></img>
             </div>
         </div>
     );

@@ -1,4 +1,3 @@
-// Imported SVG file so it would show up correctly. I couldn't place it directly in the img src
 import logo from '../assets/logo.svg'
 import back_arrow from '../assets/back_arrow.svg';
 import { useNavigate, useLocation } from 'react-router';
