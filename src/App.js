@@ -12,6 +12,7 @@ import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPokemonData } from './actions/pokemonAction';
 import { setSearch } from './actions/searchAction';
+import { capitalize } from './utility';
 
 const App = () => {
 
@@ -113,7 +114,7 @@ const App = () => {
       }
     } else {
       // This capitalizes the first letter of the name
-      text = text.charAt(0).toUpperCase() + text.substring(1);
+      text = capitalize(text);
       // Checks to see if the pokemon actually exist
       if (pokemon.all().includes(text)) {
         fetchPokemonData(text);

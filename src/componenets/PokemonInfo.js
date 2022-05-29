@@ -7,14 +7,11 @@ import legendaryBadge from '../assets/legendary.svg';
 import mythicalBadge from '../assets/myth.svg';
 
 import noPokemonImg from '../assets/no-image.svg';
+import { capitalize } from '../utility';
 
 const PokemonInfo = (props) => {
 
     const pokemonData = useSelector(state => state.pokemonData);
-
-    const capitalizeName = (name) => {
-        return name.charAt(0).toUpperCase() + name.substring(1).toLowerCase();
-    }
 
     const setId = (id) => {
         switch (id.toString().length) {
@@ -36,7 +33,7 @@ const PokemonInfo = (props) => {
             <div className={`container`}>
                 <div className='identity'>
                     <div className="identity_left-side">
-                        <h1 className='pokemon-name'>{capitalizeName(pokemonData.name)}</h1>
+                        <h1 className='pokemon-name'>{capitalize(pokemonData.name)}</h1>
                         {
                             pokemonData.is_legendary ? <img className="legendary" src={legendaryBadge} alt="legendary badge"></img> : null
                         }

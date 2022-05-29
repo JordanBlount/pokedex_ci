@@ -8,6 +8,7 @@ import Stat from '../componenets/stats/Stat';
 import '../css/Stats.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { showSearchBar } from '../actions/searchAction';
+import { capitalize } from '../utility';
 
 const Stats = (props) => {
 
@@ -47,10 +48,6 @@ const Stats = (props) => {
             return final
         })
         return final;
-    }
-
-    const capitalize = word => {
-        return word.charAt(0).toUpperCase() + word.substring(1);
     }
 
     const fixName = word => {
