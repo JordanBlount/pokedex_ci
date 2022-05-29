@@ -3,11 +3,10 @@ import { useSelector } from 'react-redux';
 import Tag from './Tag';
 
 import '../css/PokemonInfo.css'
-import legendaryBadge from '../assets/legendary.svg';
-import mythicalBadge from '../assets/myth.svg';
 
 import noPokemonImg from '../assets/no-image.svg';
 import { capitalize } from '../utility';
+import Badge from './Badge';
 
 const PokemonInfo = (props) => {
 
@@ -22,7 +21,7 @@ const PokemonInfo = (props) => {
             case 3:
                 return `#${id}`
             default:
-                return id.toString()
+                return `#${id}`
         }
     }
 
@@ -34,12 +33,14 @@ const PokemonInfo = (props) => {
                 <div className='identity'>
                     <div className="identity_left-side">
                         <h1 className='pokemon-name'>{capitalize(pokemonData.name)}</h1>
-                        {
+                        <Badge isLegendary={pokemonData.is_legendary} />
+                        <Badge isMythical={pokemonData.is_mythical} />
+                        {/* {
                             pokemonData.is_legendary ? <img className="legendary" src={legendaryBadge} alt="legendary badge"></img> : null
                         }
                         {
                             pokemonData.is_mythical ? <img className="mythical" src={mythicalBadge} alt="mythical badge"></img> : null
-                        }
+                        } */}
                     </div>
                     <div className="identity_right-side">
                         <p className='pokemon-id'>{setId(pokemonData.id)}</p>
