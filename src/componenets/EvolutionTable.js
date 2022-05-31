@@ -3,14 +3,14 @@ import Evolution from './Evolution';
 import '../css/EvolutionTable.css'
 
 // FIXME: Stop this component from rendering 4 or 8 times. Something is going on where it renders two.
-const EvolutionTable = (props) => {
+const EvolutionTable = ({ pokemonData }) => {
 
     let baseImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/`
 
     const getPokemonId = (url) => {
-        let slashs = (findIndices(url, '/'));
-        let first = slashs[slashs.length - 2];
-        let last = slashs[slashs.length - 1];
+        let slashes = (findIndices(url, '/'));
+        let first = slashes[slashes.length - 2];
+        let last = slashes[slashes.length - 1];
         return url.substring(first + 1, last);
     }
 
@@ -20,11 +20,12 @@ const EvolutionTable = (props) => {
             return indices;
         }, [])
 
+
     // FIXME: Refractor this code
     const evolutionTable = () => {
         let chains = [];
-        if (props.pokemonData.chain !== undefined && props.pokemonData.chain.evolves_to.length !== 0) {
-            let firstChain = props.pokemonData.chain;
+        if (pokemonData.chain !== undefined && pokemonData.chain.evolves_to.length !== 0) {
+            let firstChain = pokemonData.chain;
             let firstPokemonId = getPokemonId(firstChain.species.url);
             let firstPokemonImg = `${baseImageUrl}${firstPokemonId}.svg`
 

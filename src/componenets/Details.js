@@ -4,7 +4,7 @@ import Section from './Section';
 
 import EvolutionTable from './EvolutionTable'
 
-const Info = (props) => {
+const Details = (props) => {
 
     const pokemonData = useSelector(state => state.pokemonData);
 
@@ -15,10 +15,9 @@ const Info = (props) => {
             </p>
             <Section pokemonData={pokemonData}/>
             <EvolutionTable pokemonData={pokemonData} />
-            {/* <Section pokemonData={props.pokemonData}/> */}
-            {/* <Section pokemonData={props.pokemonData}/> */}
+            {/* TODO: Add more sections here */}
         </div>
     );
 };
 
-export default Info;
+export default Details;

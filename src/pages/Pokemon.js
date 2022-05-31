@@ -7,6 +7,7 @@ import Board from '../componenets/Board';
 
 const Pokemon = (props) => {
 
+    const navigate = useNavigate();
     const { id } = useParams();
 
     const pokemonData = useSelector(state => state.pokemonData);
@@ -17,8 +18,24 @@ const Pokemon = (props) => {
         if(pokemonData.default) {
             // NOTE: Gets the pokemon based on the current id (we get this from React Router);
             props.submitSearch(null, id, false);
+        } else {
+            console.log("Got here");
+            // Checks to see if id is an integer
+            if(!Number.isNaN(id)) {
+                if(pokemonData.id !== parseInt(id)) {
+                    props.submitSearch(null, id, false);
+                }
+            } else if(typeof id === 'string') {
+                if(pokemonData.name.toLowerCase() !== id.toLowerCase()) {
+                    // nothing happens...The page should not refresh.
+                    props.submitSearch(null, id.toLowerCase(), false);
+                }
+            } else {
+                navigate('/');
+            }
         }
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id]);
     
     return (
         <div className="pokemon page">
