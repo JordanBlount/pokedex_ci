@@ -19,15 +19,16 @@ const Pokemon = (props) => {
             // NOTE: Gets the pokemon based on the current id (we get this from React Router);
             props.submitSearch(null, id, false);
         } else {
-            console.log("Got here");
-            // Checks to see if id is an integer
+            // In case we already have pokemon data loaded in our state,
+            // We check to see if it is the same as the id (in the search bar).
+            // If not, we are going to fetch the new data
+
             if(!Number.isNaN(id)) {
                 if(pokemonData.id !== parseInt(id)) {
                     props.submitSearch(null, id, false);
                 }
             } else if(typeof id === 'string') {
                 if(pokemonData.name.toLowerCase() !== id.toLowerCase()) {
-                    // nothing happens...The page should not refresh.
                     props.submitSearch(null, id.toLowerCase(), false);
                 }
             } else {
