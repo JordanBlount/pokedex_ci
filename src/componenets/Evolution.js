@@ -1,12 +1,11 @@
 import React from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import noPokemonImg from "../assets/no-image.svg";
 import { checkIfImageExists } from "../utility";
 
 const Evolution = (props) => {
-  const navigate = useNavigate();
   // FIXME: Change this to store the URLs in state so that I do not have to make unncessary calls (e.g. The second pokemon image is checked 2 different times unncessarily)
   return (
     <div className="evolution">
